@@ -1,0 +1,95 @@
+//font
+.font(@f-color: @black; @f-family: @font-family-sans-serif; @f-size: @font-size-base) {
+  color: @f-color;
+  font-family: @f-family;
+  font-size: @f-size;
+}
+
+//border-radius
+.bd-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+//paddings & margins
+.padding-vertical(@pt; @pb) {
+  padding-top: @pt;
+  padding-bottom: @pb;
+}
+.padding-horizontal(@pl; @pr) {
+  padding-left: @pl;
+  padding-right: @pr;
+}
+.margin-vertical(@pt; @pb) {
+  margin-top: @pt;
+  margin-bottom: @pb;
+}
+.margin-horizontal(@pl; @pr) {
+  margin-left: @pl;
+  margin-right: @pr;
+}
+
+//vertical centering
+.vertical-center() {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+//focus & hover states
+.focus-state(@rule) {
+  &:focus,
+  .focus {
+    @rule();
+  }
+}
+.hover-state (@rule) {
+  &:hover,
+  &:focus,
+  &.focus {
+    @rule();
+  }
+}
+.active-state (@rule) {
+  &:active,
+  &.active {
+    @rule();
+  }
+}
+.hover-active-state (@rule) {
+  .hover-state (@rule);
+  .active-state (@rule)
+}
+
+//sprite bg image
+.bg_img(@x; @y) {
+  background: url("@{path}/imgs/sprite.png") @x @y no-repeat;
+}
+
+//multiple options transform
+.transform_multi(@rules) {
+  -webkit-transform: @rules;
+  -moz-transform: @rules;
+  -ms-transform: @rules;
+  -o-transform: @rules;
+  transform: @rules;
+}
+
+//media utilities
+.md-media(@rule) {
+  @media screen and (max-width: @screen-md-max) {
+    @rule();
+  }
+}
+.sm-media(@rule) {
+  @media screen and (max-width: @screen-sm-max) {
+    @rule();
+  }
+}
+.xs-media(@rule) {
+  @media screen and (max-width: @screen-xs-max) {
+    @rule();
+  }
+}
+
+//here will be mobile first media queries

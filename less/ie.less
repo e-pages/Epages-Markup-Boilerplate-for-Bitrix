@@ -1,0 +1,92 @@
+// Core variables and mixins
+@import (reference) "@{path}/bootstrap/variables.less";
+@import (reference) "@{path}/bootstrap/mixins.less";
+
+// Reset and dependencies
+@import (reference) "@{path}/bootstrap/normalize.less";
+// @import (reference) "@{path}/bootstrap/print.less";
+// @import (reference) "@{path}/bootstrap/glyphicons.less";
+
+
+@import (reference) "@{path}/local/utilities.less";
+@import (reference) "@{path}/local/variables.less";
+@path: ".";
+
+#gradient-ie-fix {
+    .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+        filter: none;
+        background-image: svg-gradient(to bottom, @start-color @start-percent, @end-color @end-percent);
+    }
+    .vertical-three-colors(@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
+        filter: none;
+        background-image: svg-gradient(to bottom, @start-color, @mid-color @color-stop, @end-color);
+    }
+}
+
+.btn-states-ie-fix(@bg-color) {
+    background-color: @bg-color;
+    @gradient-light-color: lighten(@bg-color, 8%);
+    &:hover,
+    &:focus,
+    &.focus {
+        #gradient-ie-fix > .vertical(@bg-color, @gradient-light-color);
+    }
+    &:active,
+    &.active {
+        #gradient-ie-fix > .vertical(@bg-color, @gradient-light-color);
+    }
+}
+
+// primary
+.btn-primary,
+.btn-success {
+    .btn-states-ie-fix(@btn-primary-bg);
+}
+
+// Info appears as blue-green
+.btn-info {
+    .btn-states-ie-fix(@brand-info);
+}
+// Warning appears as orange
+.btn-warning {
+    .btn-states-ie-fix(@brand-warning);
+}
+// Danger and error appear as red
+.btn-danger {
+    .btn-states-ie-fix(@brand-danger);
+}
+
+
+.btn-buy {
+    .btn-states-ie-fix(@btn-primary-bg);
+}
+.pagination li {
+    &.prev,
+    &.next
+    {
+        a, span {
+            .btn-states-ie-fix(@btn-primary-bg);
+        }
+    }
+}
+
+.main-menu.nav-pills {
+    & > li {
+        .hover-and-active-state() {
+            background-color: #fff;
+            #gradient-ie-fix > .vertical-three-colors(#ececec; #fff; 100% - 17%; #fff);
+        }
+        & > a {
+            @bg-color: #656565;
+            // .btn-states-ie-fix(@bg-color);
+            #gradient-ie-fix > .vertical(@bg-color; lighten(@bg-color, 8%));
+
+            .hover-active-state{
+                .hover-and-active-state();
+                };
+        }
+        &.active > a {
+            .hover-and-active-state();
+        }
+    }
+}
