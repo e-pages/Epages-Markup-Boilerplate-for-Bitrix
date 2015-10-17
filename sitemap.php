@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sitemap</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <style>
+        * {
+            font-family: "Ubuntu", sans-serif;
+        }
+        html,
+        body {
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .block {
+            display: inline-block;
+            vertical-align: top;
+            float: left;
+            margin: 10px 40px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 25px;
+        }
+        a {
+            text-transform: lowercase;
+        }
+    </style>
+</head>
+<body>
+    <?php function getDirMap($dirname) {
+        // read page directory
+        $dirmap = array();
+        if ($handle = opendir('./'.$dirname)) {
+            while (false !== ($file = readdir($handle))) {
+                if ($file != "." && $file != "..") {
+                    $dirmap[] = array(
+                        'url' => $dirname . "/" . $file,
+                        'name' => (($ext_index = strripos($file, ".php", -1)) === false ? $file : substr_replace($file, "", $ext_index, 4))
+                        );
+                }
+            }
+        closedir($handle);
+        }
+        return $dirmap;
+    } ?>
+    <div class="block">
+        <h1>Pages</h1>
+        <ul>
+            <?php foreach (getDirMap("pages") as $value) { ?>
+            <li>
+                <a href="<?php echo $value['url']; ?>">
+                    <?php echo $value['name']; ?>
+                </a>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="block">
+        <h1>Other</h1>
+        <ul>
+            <?php foreach (getDirMap("sub-pages") as $value) { ?>
+            <li>
+                <a href="<?php echo $value['url']; ?>">
+                    <?php echo $value['name']; ?>
+                </a>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+</body>
+</html>
