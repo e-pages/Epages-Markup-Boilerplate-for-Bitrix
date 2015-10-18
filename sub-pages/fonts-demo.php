@@ -3,7 +3,8 @@
 <?php
     // font settings for test
     $fonts = array(
-        'Open Sans'
+        'Times',
+        'Sans-serif'
         );
     $weights = array (
         100,
@@ -19,7 +20,7 @@
         'bold'
         );
     $styles = array ('normal', 'italic');
-    $sizes = array (96, 72, 60, 48, 36, 30, 24, 21, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9);
+    $sizes = array (96, 72, 60, 48, 36, 30, 24, 18, 16, 14, 12, 10, 9);
  ?>
 
 <div id="top"></div>
