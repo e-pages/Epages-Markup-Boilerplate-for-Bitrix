@@ -110,7 +110,7 @@ line {
 /* Font and sprite icons usage example ----------------------------- */
 .icon {
   .make-xs-column(1);
-  padding: 10px 15px;
+  padding: 10px;
   background-color: @brand-primary;
   color: #fff;
   text-align: center;
