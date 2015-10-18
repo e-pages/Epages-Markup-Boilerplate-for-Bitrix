@@ -22,7 +22,7 @@
 <!-- Page -->
 <div class="test-page-content">
     <div class="container">
-        <h1 id="default">Sidebar</h1>
+        <h1 id="default">Default Component</h1>
         <div class="row">
             <?php require(SITE_DIR . "/components/_default_component.php"); ?>
         </div>
