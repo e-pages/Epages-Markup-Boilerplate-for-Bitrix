@@ -151,6 +151,11 @@ header span {
 .fa {
   font-size: 3.5rem;
 }
+.form-group {
+  .glyphicon {
+    font-size: 1em;
+  }
+}
 .sprite-full {
   border: 3px solid @brand-primary;
   background-color: #fafafa;

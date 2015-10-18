@@ -92,7 +92,14 @@
             </ul>
         </li>
         <li>
-            <a href="http://getbootstrap.com/css/#tables">Tables</a>
+            <a href="#tables">Tables</a>
+            <ul>
+                <li><a href="#basic">Basic</a></li>
+                <li><a href="#striped">Striped</a></li>
+                <li><a href="#bordered">Bordered</a></li>
+                <li><a href="#hover">Hover</a></li>
+                <li><a href="#condensed">Condensed</a></li>
+            </ul>
         </li>
         <li>
             <a href="#images">Images</a>
@@ -314,36 +321,36 @@
                 </div>
 
                 <h2 id="switchers">Checkboxes and radios</h2>
-                <div data-toggle="buttons">
+                <div>
                     <div class="checkbox">
-                        <label class="btn">
+                        <label>
                             <input type="checkbox" value="">
                             Option one is this and that&mdash;be sure to include why it's great
                         </label>
                     </div>
                     <div class="checkbox disabled">
-                        <label class="btn">
+                        <label>
                             <input type="checkbox" value="" disabled>
                             Option two is disabled
                         </label>
                     </div>
                 </div>
 
-                <div data-toggle="buttons">
+                <div>
                     <div class="radio">
-                        <label class="btn">
+                        <label>
                             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
                             Option one is this and that&mdash;be sure to include why it's great
                         </label>
                     </div>
                     <div class="radio">
-                        <label class="btn">
+                        <label>
                             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                             Option two can be something else and selecting it will deselect option one
                         </label>
                     </div>
                     <div class="radio disabled">
-                        <label class="btn">
+                        <label>
                             <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
                             Option three is disabled
                         </label>
@@ -351,7 +358,7 @@
                 </div>
                 <br>
 
-                <div> <!-- data-toggle="buttons" -->
+                <div>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
                     </label>
@@ -363,7 +370,7 @@
                     </label>
                 </div>
                 <br>
-                <div> <!-- data-toggle="buttons" -->
+                <div>
                     <label class="radio-inline">
                         <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
                     </label>
@@ -522,7 +529,7 @@
                             <option>Disabled select</option>
                         </select>
                     </div>
-                    <div class="checkbox" data-toggle="buttons">
+                    <div class="checkbox">
                         <label class="btn">
                             <input type="checkbox"> Can't check this
                         </label>
@@ -549,24 +556,24 @@
                     <input type="text" class="form-control" id="inputError1">
                 </div>
                 <div class="has-success">
-                    <div class="checkbox" data-toggle="buttons">
-                        <label class="btn">
+                    <div class="checkbox">
+                        <label>
                             <input type="checkbox" id="checkboxSuccess" value="option1">
                             Checkbox with success
                         </label>
                     </div>
                 </div>
                 <div class="has-warning">
-                    <div class="checkbox" data-toggle="buttons">
-                        <label class="btn">
+                    <div class="checkbox">
+                        <label>
                             <input type="checkbox" id="checkboxWarning" value="option1">
                             Checkbox with warning
                         </label>
                     </div>
                 </div>
                 <div class="has-error">
-                    <div class="checkbox" data-toggle="buttons">
-                        <label class="btn">
+                    <div class="checkbox">
+                        <label>
                             <input type="checkbox" id="checkboxError" value="option1">
                             Checkbox with error
                         </label>
@@ -602,7 +609,7 @@
                     <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
                 </div>
 
-                <h2 id="contextual-colors">Contextual colos</h2>
+                <h2 id="contextual-colors">Contextual colors</h2>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                 <p class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                 <p class="text-success">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
@@ -638,8 +645,8 @@
                     <input type="file" id="exampleInputFile">
                     <p class="help-block">Example block-level help text here.</p>
                 </div>
-                <div class="checkbox" data-toggle="buttons">
-                    <label class="btn">
+                <div class="checkbox">
+                    <label>
                         <input type="checkbox"> Check me out
                     </label>
                 </div>
@@ -708,8 +715,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-6">
-                        <div class="checkbox" data-toggle="buttons">
-                            <label class="btn">
+                        <div class="checkbox">
+                            <label>
                                 <input type="checkbox"> Remember me
                             </label>
                         </div>
@@ -725,9 +732,10 @@
     </div>
     <br>
 
-    <h1 id="typography">Typography - Heading 1 <small id="heading">Secondary text</small> </h1>
+    <h1 id="typography">Typography</h1>
     <div class="row">
         <div class="col-xs-8">
+            <h1 id="heading">Heading 1 <small>Secondary text</small> </h1>
             <h2>Heading 2 <small>Secondary text</small> </h2>
             <h3>Heading 3 <small>Secondary text</small> </h3>
             <h4>Heading 4 <small>Secondary text</small> </h4>
@@ -881,6 +889,47 @@
                 <dd>Quaerat rerum labore repellendus sint?</dd>
             </dl><br>
             <br>
+        </div>
+    </div>
+
+
+    <h1 id="tables">Tables</h1>
+    <div class="row">
+        <div class="col-xs-8">
+            <?php $table_classes = array("basic", "striped", "bordered", "hover", "condensed");
+            foreach ($table_classes as $key => $value) {?>
+                <table class="table table-<?php echo $value?>" id="<?php echo $value?>">
+                    <caption>Optional table caption.</caption>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            <?php }?>
         </div>
     </div>
 
@@ -1068,6 +1117,7 @@
     <h2 id="svg">SVG Sprite</h2>
     <div class="row">
         <div class="col-xs-10">
+            here is svg
 <!--            <img src="--><?php //echo SITE_TEMPLATE_PATH; ?><!--/imgs/svg-sprite.svg" alt="" class="img-responsive">-->
         </div>
     </div>
