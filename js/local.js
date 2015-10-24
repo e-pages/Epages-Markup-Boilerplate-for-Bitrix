@@ -1,7 +1,18 @@
 $(document).ready(function() {
-    //here will be standard scripts
-    //1. fade body
-    //2. replace elements
-    //3. accordion
-    //4. bootstrap carousel
+    //variables
+    var timeAnimation = 300;
+
+    //accordion
+    $('.first-level-link').click(function (e) {
+        e.preventDefault();
+        $(this).siblings('ul').slideToggle();
+        $(this).parent('li').siblings('li').children('ul').slideUp();
+    });
+
+    //scroll up
+    $('.up').click(function () {
+        $('html, body').animate({
+            'scrollTop': 0
+        }, timeAnimation);
+    });
 });
