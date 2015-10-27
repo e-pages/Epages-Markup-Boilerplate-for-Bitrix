@@ -32,10 +32,10 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?php echo SITE_TEMPLATE_PATH; ?>">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>">Home</a>
         </li>
         <li>
-            <a href="<?php echo SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
         </li>
     </ul>
     <ul class="nav">
@@ -49,8 +49,8 @@
                 $font_link = strtoupper(str_replace(" ", "_", sprintf("%s", str_replace(" ", "_", $fontname))));
                     ?>
                 <li>
-                    <a href="#<?php echo $font_link; ?>">
-                        <?php echo $fontname; ?>
+                    <a href="#<?=$font_link; ?>">
+                        <?=$fontname; ?>
                     </a>
                 </li>
                 <?php } ?>
@@ -97,11 +97,11 @@ $text = $text_ru . $text_en . $digits ."The five boxing wizards jump quickly. Lo
         foreach ($fonts as $font) {
             ?>
             <p>
-                <span class="title"><?php echo $font; ?></span>
+                <span class="title"><?=$font; ?></span>
                 <?php
                 foreach ($styles as $style) {
                     ?>
-                    <span class="samplebox title"><?php echo $style; ?></span>
+                    <span class="samplebox title"><?=$style; ?></span>
                     <?php
                 }
                 ?>
@@ -111,7 +111,7 @@ $text = $text_ru . $text_en . $digits ."The five boxing wizards jump quickly. Lo
             foreach ($weights as $weight) {
                 ?>
                 <p>
-                    <span class="weight title"><?php echo $weight; ?>: </span>
+                    <span class="weight title"><?=$weight; ?>: </span>
                     <?php
                     foreach ($styles as $style) {
                         $blockid = strtoupper(str_replace(" ", "_", sprintf("%s_%s_%s", str_replace(" ", "_", $font), $weight, $style)));
@@ -136,14 +136,14 @@ $text = $text_ru . $text_en . $digits ."The five boxing wizards jump quickly. Lo
         foreach ($fonts as $font) {
             $font_link = strtoupper(str_replace(" ", "_", sprintf("%s", str_replace(" ", "_", $font))));
         ?>
-        <h1 id="<?php echo $font_link ?>"><?php echo $font; ?></h1>
+        <h1 id="<?=$font_link ?>"><?=$font; ?></h1>
         <?php
             foreach ($weights as $weight) {
                 foreach ($styles as $style) {
                     $blockid = strtoupper(str_replace(" ", "_", sprintf("%s_%s_%s", str_replace(" ", "_", $font), $weight, $style)));
                     ?>
                     <h2 >
-                        <a name="<?php echo $blockid; ?>">
+                        <a name="<?=$blockid; ?>">
                             <?php echo $font . " " . $weight . " " . $style; ?>
                         </a>
                     </h2>

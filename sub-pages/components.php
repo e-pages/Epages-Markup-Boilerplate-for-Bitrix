@@ -8,10 +8,10 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?php echo SITE_TEMPLATE_PATH; ?>">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>">Home</a>
         </li>
         <li>
-            <a href="<?php echo SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
         </li>
     </ul>
     <ul class="nav">

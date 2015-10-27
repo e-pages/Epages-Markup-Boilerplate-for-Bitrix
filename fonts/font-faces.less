@@ -1,7 +1,7 @@
 @path: "..";
 @font-path: "@{path}/fonts";
 
-.include-font(@family-name; @f-type) {
+.include-font(@family-name; @f-type; @f-style: normal; @f-weight: normal) {
   @font-face {
     font-family: @family-name;
     src: url('@{font-path}/@{family-name}/@{family-name}-@{f-type}.eot');
@@ -9,5 +9,7 @@
     url('@{font-path}/@{family-name}/@{family-name}-@{f-type}.woff') format('woff'),
     url('@{font-path}/@{family-name}/@{family-name}-@{f-type}.ttf') format('truetype'),
     url('@{font-path}/@{family-name}/@{family-name}-@{f-type}.svg#@{family-name}-@{f-type}') format('svg');
+    font-style: normal;
+    font-weight: normal;
   }
 }
