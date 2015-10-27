@@ -11,14 +11,14 @@ require("lib.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Styles for current site -->
-    <link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH; ?>/css/styles.css"/>
+    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH; ?>/css/styles.css"/>
     <!--[if lte IE 9]>
-        <link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH; ?>/css/ie.css"/>
+        <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH; ?>/css/ie.css"/>
     <![endif]-->
 
 <?php if (checkCurrentPageLink("sub-pages")) { ?>
     <!--styles for test page-->
-    <link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH; ?>/css/test.css">
+    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH; ?>/css/test.css">
 <?php } ?>
 
 </head>

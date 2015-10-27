@@ -9,10 +9,10 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?php echo SITE_TEMPLATE_PATH; ?>">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>">Home</a>
         </li>
         <li>
-            <a href="<?php echo SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
         </li>
     </ul>
     <ul class="nav">
@@ -182,7 +182,7 @@
                     foreach ($buttons as $key => $value) {
                         ?>
                         <li role="presentation"<?php if ($i == 2) echo " class=\"active\""; ?>>
-                            <a href="#btn_<?php echo $value; ?>" aria-controls="btn_<?php echo $value; ?>" role="tab" data-toggle="tab"><?php echo $value; ?></a>
+                            <a href="#btn_<?=$value; ?>" aria-controls="btn_<?=$value; ?>" role="tab" data-toggle="tab"><?=$value; ?></a>
                         </li>
                         <?php
                         $i++;
@@ -194,39 +194,39 @@
                     <?php $i = 1;
                     foreach ($buttons as $key => $value) {
                         ?>
-                        <div role="tabpanel" class="tab-pane<?php if ($i == 2) echo " active"; ?>" id="btn_<?php echo $value; ?>">
+                        <div role="tabpanel" class="tab-pane<?php if ($i == 2) echo " active"; ?>" id="btn_<?=$value; ?>">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <br>
                                     normal <br>
-                                    <a class="btn btn-<?php echo $value; ?>" href="#" role="button">Купить</a>
-                                    <button class="btn btn-<?php echo $value; ?>" type="submit">Button</button>
-                                    <input class="btn btn-<?php echo $value; ?>" type="button" value="Input">
-                                    <input class="btn btn-<?php echo $value; ?>" type="submit" value="Submit">
+                                    <a class="btn btn-<?=$value; ?>" href="#" role="button">Купить</a>
+                                    <button class="btn btn-<?=$value; ?>" type="submit">Button</button>
+                                    <input class="btn btn-<?=$value; ?>" type="button" value="Input">
+                                    <input class="btn btn-<?=$value; ?>" type="submit" value="Submit">
                                 </div>
                                 <div class="col-xs-12">
                                     <br>
                                     hover / focus <br>
-                                    <a class="btn btn-<?php echo $value; ?> focus" href="#" role="button">Link</a>
-                                    <button class="btn btn-<?php echo $value; ?> focus" type="submit">Button</button>
-                                    <input class="btn btn-<?php echo $value; ?> focus" type="button" value="Input">
-                                    <input class="btn btn-<?php echo $value; ?> focus" type="submit" value="Submit">
+                                    <a class="btn btn-<?=$value; ?> focus" href="#" role="button">Link</a>
+                                    <button class="btn btn-<?=$value; ?> focus" type="submit">Button</button>
+                                    <input class="btn btn-<?=$value; ?> focus" type="button" value="Input">
+                                    <input class="btn btn-<?=$value; ?> focus" type="submit" value="Submit">
                                 </div>
                                 <div class="col-xs-12">
                                     <br>
                                     down / active <br>
-                                    <a class="btn btn-<?php echo $value; ?> active" href="#" role="button">Link</a>
-                                    <button class="btn btn-<?php echo $value; ?> active" type="submit">Button</button>
-                                    <input class="btn btn-<?php echo $value; ?> active" type="button" value="Input">
-                                    <input class="btn btn-<?php echo $value; ?> active" type="submit" value="Submit">
+                                    <a class="btn btn-<?=$value; ?> active" href="#" role="button">Link</a>
+                                    <button class="btn btn-<?=$value; ?> active" type="submit">Button</button>
+                                    <input class="btn btn-<?=$value; ?> active" type="button" value="Input">
+                                    <input class="btn btn-<?=$value; ?> active" type="submit" value="Submit">
                                 </div>
                                 <div class="col-xs-12">
                                     <br>
                                     disabled <br>
-                                    <a class="btn btn-<?php echo $value; ?> disabled" href="#" role="button">Link</a>
-                                    <button class="btn btn-<?php echo $value; ?>" disabled="disabled" type="submit">Button</button>
-                                    <input class="btn btn-<?php echo $value; ?>" disabled="disabled" type="button" value="Input">
-                                    <input class="btn btn-<?php echo $value; ?>" disabled="disabled" type="submit" value="Submit">
+                                    <a class="btn btn-<?=$value; ?> disabled" href="#" role="button">Link</a>
+                                    <button class="btn btn-<?=$value; ?>" disabled="disabled" type="submit">Button</button>
+                                    <input class="btn btn-<?=$value; ?>" disabled="disabled" type="button" value="Input">
+                                    <input class="btn btn-<?=$value; ?>" disabled="disabled" type="submit" value="Submit">
                                 </div>
                             </div>
                         </div>
@@ -898,7 +898,7 @@
         <div class="col-xs-8">
             <?php $table_classes = array("basic", "striped", "bordered", "hover", "condensed");
             foreach ($table_classes as $key => $value) {?>
-                <table class="table table-<?php echo $value?>" id="<?php echo $value?>">
+                <table class="table table-<?=$value?>" id="<?=$value?>">
                     <caption>Optional table caption.</caption>
                     <thead>
                     <tr>
@@ -984,8 +984,8 @@
                 "menu-down", "menu-up");
             foreach ($icons as $key => $value) { ?>
             <div class="icon">
-                <span class="glyphicon glyphicon-<?php echo $value; ?>"></span>
-                <span class="name">glyphicon-<?php echo $value; ?></span>
+                <span class="glyphicon glyphicon-<?=$value; ?>"></span>
+                <span class="name">glyphicon-<?=$value; ?></span>
             </div>
             <?php } ?>
         </div>
@@ -1085,8 +1085,8 @@
                 "commenting", "commenting-o", "houzz", "vimeo", "black-tie", "fonticons");
             foreach ($icons as $key => $value) { ?>
             <div class="icon">
-                <i class="fa fa-<?php echo $value; ?>"></i>
-                <span class="name">fa-<?php echo $value; ?></span>
+                <i class="fa fa-<?=$value; ?>"></i>
+                <span class="name">fa-<?=$value; ?></span>
             </div>
             <?php } ?>
         </div>
@@ -1097,7 +1097,7 @@
     <h2 id="sprite-full-image">Full image</h2>
     <div class="row">
         <div class="col-xs-10">
-            <img src="<?php echo SITE_TEMPLATE_PATH; ?>/imgs/sprite.png" alt="Sprites" class="sprite-full">
+            <img src="<?=SITE_TEMPLATE_PATH; ?>/imgs/sprite.png" alt="Sprites" class="sprite-full">
         </div>
     </div>
     <h2 id="sprite-one-by-one">One by one</h2>
@@ -1108,8 +1108,8 @@
             );
             foreach ($icons as $key => $value) { ?>
             <div class="icon icon-sprite">
-                <i class="<?php echo $value; ?>"></i>
-                <span class="name"><?php echo $value; ?></span>
+                <i class="<?=$value; ?>"></i>
+                <span class="name"><?=$value; ?></span>
             </div>
             <?php } ?>
         </div>
@@ -1118,7 +1118,7 @@
     <div class="row">
         <div class="col-xs-10">
             here is svg
-<!--            <img src="--><?php //echo SITE_TEMPLATE_PATH; ?><!--/imgs/svg-sprite.svg" alt="" class="img-responsive">-->
+<!--            <img src="--><?//=SITE_TEMPLATE_PATH; ?><!--/imgs/svg-sprite.svg" alt="" class="img-responsive">-->
         </div>
     </div>
 </div>

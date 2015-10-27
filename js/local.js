@@ -10,7 +10,8 @@ $(document).ready(function() {
     });
 
     //scroll up
-    $('.up').click(function () {
+    $('.up').click(function (e) {
+        e.preventDefault();
         $('html, body').animate({
             'scrollTop': 0
         }, timeAnimation);
