@@ -2,3 +2,5 @@
 *.xml
 .idea/indigo.iml
 node_modules
+bower_components
+css
