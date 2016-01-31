@@ -4,3 +4,9 @@
 node_modules
 bower_components
 css
+js/**/*.min.js
+**/*.eot
+**/*.ttf
+**/*.woff
+**/*.woff2
+fonts/*.svg
