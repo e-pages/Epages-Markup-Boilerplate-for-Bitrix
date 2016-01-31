@@ -9,3 +9,8 @@ Version 1.0:
 
 Version 1.1:
 * use Gulp.js for compiling, minifying and concatenating
+
+Version 1.2:
+* Use Bower
+* change project structure
+* add gulp-autoprefixer
