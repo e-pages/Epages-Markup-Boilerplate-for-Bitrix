@@ -7,7 +7,7 @@
             </div>
         </div>
         <!--[if lt IE 9]>
-        <script src="<?=SITE_TEMPLATE_PATH; ?>/js/html5.js"></script>
+        <script src="<?=SITE_TEMPLATE_PATH; ?>/js/html5.min.js"></script>
         <![endif]-->
         <!-- Load js libraries -->
         <script src="<?=SITE_TEMPLATE_PATH; ?>/js/libs.min.js"></script>
