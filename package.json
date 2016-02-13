@@ -1,8 +1,8 @@
 {
   "name": "epages_markup_standart",
   "version": "1.2.0",
-  "description": "Version 1.0:\r * Preprocessor Less\r * Bootstrap v3.3.5\r * JQuery v2.1.4\r * Font Awesome v4.4.0\r * Pages are built by components",
-  "main": "gulpfile.js",
+  "description": "Markup boilerplate",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,7 +25,10 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^1.0.1",
+    "gulp-imagemin": "^2.4.0",
     "gulp-less": "^3.0.5",
-    "gulp-uglify": "^1.5.1"
+    "gulp-uglify": "^1.5.1",
+    "gulp.spritesmith": "^6.2.0",
+    "imagemin-pngquant": "^4.2.0"
   }
 }

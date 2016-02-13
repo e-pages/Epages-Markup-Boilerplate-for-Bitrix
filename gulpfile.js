@@ -4,17 +4,24 @@ var csso = require('gulp-csso');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var autoprefixer = require('gulp-autoprefixer');
+var spritesmith = require('gulp.spritesmith');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
-//paths
+//paths vars
 var mainLessFile = './less/styles.less';
 var testLessFile = './less/test/test.less';
 var fontFaceLessFile = './fonts/font-faces.less';
+var tempLessFile = './less/temp.less';
 
 var jqueryFilePath = 'bower_components/jquery/dist/jquery.min.js';
 var bootstrapJsFilePath = 'bower_components/bootstrap/dist/js/bootstrap.min.js';
 var jsLibs = [jqueryFilePath, bootstrapJsFilePath];
 
 var bsFontsPath = 'bower_components/bootstrap/fonts/**';
+var faFontsPath = 'bower_components/font-awesome/fonts/**';
+var bsLessFiles = 'bower_components/bootstrap/less/**/*.less';
+var faLessFiles = 'bower_components/font-awesome/less/*.less';
 
 //compile main less file & compress it
 gulp.task('compileMainLessFile', function () {
@@ -40,6 +47,16 @@ gulp.task('compileFontFaceFile', function () {
         .pipe(gulp.dest('./css'));
 });
 
+//compile temporary less file & compress it
+//temp file will be deleted in the end
+gulp.task('compileTempFile', function () {
+    return gulp.src(tempLessFile)
+        .pipe(less())
+        .pipe(csso())
+        .pipe(gulp.dest('./css'));
+});
+gulp.task('compileAllLessFiles', ['compileMainLessFile', 'compileTestLessFile', 'compileFontFaceFile', 'compileTempFile']);
+
 //minify js
 //gulp.task('minifyJs', function () {
 //    return gulp.src(jsLibs)
@@ -49,17 +66,44 @@ gulp.task('compileFontFaceFile', function () {
 
 //copy files
 gulp.task('copyFonts', function () {
-    return gulp.src(bsFontsPath)
-        .pipe(gulp.dest('fonts'))
+    gulp.src(bsFontsPath).pipe(gulp.dest('fonts'));
+    gulp.src(faFontsPath).pipe(gulp.dest('fonts'));
+});
+//copy css files when you need styles from bower component
+//gulp.task('copyStyles', function () {
+//    return gulp.src()
+//        .pipe(gulp.dest('css'))
+//});
+
+gulp.task('copyLessLibs', function () {
+    gulp.src(bsLessFiles).pipe(gulp.dest('less/src/bootstrap'));
+    gulp.src(faLessFiles).pipe(gulp.dest('less/src/font-awesome'));
+});
+gulp.task('copyAllFiles', ['copyFonts', 'copyLessLibs']);
+
+//generate sprites
+gulp.task('makeSprite', function () {
+    var spriteData =
+        gulp.src('./imgs/sprite_icons/*.*')
+            .pipe(spritesmith({
+                imgName: 'sprite.png',
+                cssName: 'sprite.less',
+                padding: 2,
+                imgPath: '../imgs/sprite.png'
+            }));
+    spriteData.img.pipe(gulp.dest('./imgs/'));
+    spriteData.css.pipe(gulp.dest('./less/src/'));
 });
 
-
-/*
- * Main tasks
- */
-gulp.task('default',
-    ['compileMainLessFile', 'compileTestLessFile', 'compileFontFaceFile', 'concatJs', 'copyFonts', 'watchLess']
-);
+//minify images
+gulp.task('imagemin', function () {
+    return gulp.src('imgs/*')
+        .pipe(imagemin({
+            progressive: true,
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('imgs/'));
+});
 
 //concat js
 gulp.task('concatJs', function() {
@@ -78,6 +122,9 @@ gulp.task('watchLess', function () {
 
     //watch for test.less
     gulp.watch(fontFaceLessFile, ['compileFontFaceFile']);
+
+    //watch for test.less
+    gulp.watch(tempLessFile, ['compileTempFile']);
 });
 
 //add prefixes at the end of developing
@@ -86,3 +133,15 @@ gulp.task('addVendorPrefixes', function () {
         .pipe(autoprefixer())
         .pipe(gulp.dest('css/'));
 });
+
+/*
+ * Main tasks
+ */
+gulp.task('default',
+    ['compileAllLessFiles', 'concatJs', 'copyAllFiles', 'watchLess']
+);
+
+//end with this task
+gulp.task('end',
+    ['addVendorPrefixes', 'imagemin', 'makeSprite', 'compileAllLessFiles', 'concatJs']
+);

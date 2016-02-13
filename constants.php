@@ -1,6 +1,6 @@
 <?php // Define local settings
 define("SITE_TEMPLATE_PATH", "..");
-define("SITE_DIR", "D:/Projects/NEW/21. Epages Markup Boilerplate for Bitrix");
+define("SITE_DIR", "..");
 $order_info = "N";
 $comment_count = 1;
 $catalog_view = "tile";
