@@ -14,3 +14,10 @@ Version 1.2:
 * Use Bower
 * change project structure
 * add gulp-autoprefixer
+
+Version 1.3:
+* use icons from new Font Awesome v4.5.0
+* generate sprite with Gulp
+* minify images with Gulp
+* improve gulpfile
+* bug fixes

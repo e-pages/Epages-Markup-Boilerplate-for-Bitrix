@@ -1082,7 +1082,10 @@
                 "get-pocket", "wikipedia-w", "safari", "chrome", "firefox", "opera", "internet-explorer", "tv",
                 "television", "contao", "500px", "amazon", "amazon", "calendar-plus-o", "calendar-minus-o",
                 "calendar-times-o", "calendar-check-o", "industry", "map-pin", "map-signs", "map-o", "map",
-                "commenting", "commenting-o", "houzz", "vimeo", "black-tie", "fonticons");
+                "commenting", "commenting-o", "houzz", "vimeo", "black-tie", "fonticons", "bluetooth", "bluetooth-b",
+                "codiepie", "credit-card-alt", "edge", "fort-awesome", "hashtag", "mixcloud", "modx", "pause-circle",
+                "pause-circle-o", "percent", "product-hunt", "reddit-alien", "scribd", "shopping-bag",
+                "shopping-basket", "stop-circle", "stop-circle-o", "usb");
             foreach ($icons as $key => $value) { ?>
             <div class="icon">
                 <i class="fa fa-<?=$value; ?>"></i>
