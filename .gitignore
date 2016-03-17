@@ -5,6 +5,7 @@ bower_components/
 css/
 less/src/bootstrap/
 less/src/font-awesome/
+/js/libs.min.js.map
 js/**/*.min.js
 **/*.eot
 **/*.ttf

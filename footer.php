@@ -15,6 +15,5 @@
             <!--script for test pages-->
             <script src="<?=SITE_TEMPLATE_PATH; ?>/js/dev.js"></script>
         <?php } ?>
-        <script src="<?=SITE_TEMPLATE_PATH; ?>/js/local.js"></script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "epages_markup_standart",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "Markup boilerplate",
   "main": "",
   "scripts": {
@@ -21,12 +21,13 @@
   },
   "homepage": "https://github.com/Rod-rig/Epages-Markup-Boilerplate-for-Bitrix#readme",
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^1.0.1",
     "gulp-imagemin": "^2.4.0",
     "gulp-less": "^3.0.5",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp.spritesmith": "^6.2.0",
     "imagemin-pngquant": "^4.2.0"

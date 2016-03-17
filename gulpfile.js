@@ -7,41 +7,52 @@ var autoprefixer = require('gulp-autoprefixer');
 var spritesmith = require('gulp.spritesmith');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var sourcemaps = require('gulp-sourcemaps');
 
 //paths vars
-var mainLessFile = './less/styles.less';
-var testLessFile = './less/test/test.less';
-var fontFaceLessFile = './fonts/font-faces.less';
-var tempLessFile = './less/temp.less';
+var paths = {
+    less: {
+        main: './less/styles.less',
+        test: './less/test/test.less',
+        font: './fonts/font-faces.less',
+        temp: './less/temp.less',
+        bootstrap: 'bower_components/bootstrap/less/**/*.less',
+        fontAwesome: 'bower_components/font-awesome/less/*.less'
+    },
+    js: {
+        jquery: 'bower_components/jquery/dist/jquery.min.js',
+        bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+        local: 'js/local.js'
+    },
+    fonts: {
+        bootstrap: 'bower_components/bootstrap/fonts/**',
+        fontAwesome: 'bower_components/font-awesome/fonts/**'
+    }
+};
 
-var jqueryFilePath = 'bower_components/jquery/dist/jquery.min.js';
-var bootstrapJsFilePath = 'bower_components/bootstrap/dist/js/bootstrap.min.js';
-var jsLibs = [jqueryFilePath, bootstrapJsFilePath];
-
-var bsFontsPath = 'bower_components/bootstrap/fonts/**';
-var faFontsPath = 'bower_components/font-awesome/fonts/**';
-var bsLessFiles = 'bower_components/bootstrap/less/**/*.less';
-var faLessFiles = 'bower_components/font-awesome/less/*.less';
+var jsLibs = [paths.js.jquery, paths.js.bootstrap, paths.js.local];
 
 //compile main less file & compress it
 gulp.task('compileMainLessFile', function () {
-    return gulp.src(mainLessFile)
+    return gulp.src(paths.less.main)
         .pipe(less())
         .pipe(csso())
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./css'));
 });
 
 //compile test less file & compress it
 gulp.task('compileTestLessFile', function () {
-    return gulp.src(testLessFile)
+    return gulp.src(paths.less.test)
         .pipe(less())
         .pipe(csso())
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./css'));
 });
 
 //compile font-face less file & compress it
 gulp.task('compileFontFaceFile', function () {
-    return gulp.src(fontFaceLessFile)
+    return gulp.src(paths.less.font)
         .pipe(less())
         .pipe(csso())
         .pipe(gulp.dest('./css'));
@@ -50,25 +61,19 @@ gulp.task('compileFontFaceFile', function () {
 //compile temporary less file & compress it
 //temp file will be deleted in the end
 gulp.task('compileTempFile', function () {
-    return gulp.src(tempLessFile)
+    return gulp.src(paths.less.temp)
         .pipe(less())
         .pipe(csso())
         .pipe(gulp.dest('./css'));
 });
 gulp.task('compileAllLessFiles', ['compileMainLessFile', 'compileTestLessFile', 'compileFontFaceFile', 'compileTempFile']);
 
-//minify js
-//gulp.task('minifyJs', function () {
-//    return gulp.src(jsLibs)
-//        .pipe(uglify())
-//        .pipe(gulp.dest('./js/libs'));
-//});
-
 //copy files
 gulp.task('copyFonts', function () {
-    gulp.src(bsFontsPath).pipe(gulp.dest('fonts'));
-    gulp.src(faFontsPath).pipe(gulp.dest('fonts'));
+    gulp.src(paths.fonts.bootstrap).pipe(gulp.dest('fonts'));
+    gulp.src(paths.fonts.fontAwesome).pipe(gulp.dest('fonts'));
 });
+
 //copy css files when you need styles from bower component
 //gulp.task('copyStyles', function () {
 //    return gulp.src()
@@ -76,8 +81,8 @@ gulp.task('copyFonts', function () {
 //});
 
 gulp.task('copyLessLibs', function () {
-    gulp.src(bsLessFiles).pipe(gulp.dest('less/src/bootstrap'));
-    gulp.src(faLessFiles).pipe(gulp.dest('less/src/font-awesome'));
+    gulp.src(paths.less.bootstrap).pipe(gulp.dest('less/src/bootstrap'));
+    gulp.src(paths.less.fontAwesome).pipe(gulp.dest('less/src/font-awesome'));
 });
 gulp.task('copyAllFiles', ['copyFonts', 'copyLessLibs']);
 
@@ -106,25 +111,28 @@ gulp.task('imagemin', function () {
 });
 
 //concat js
-gulp.task('concatJs', function() {
+gulp.task('compressJS', function() {
     return gulp.src(jsLibs)
-        .pipe(concat('libs.min.js'))
-        .pipe(gulp.dest('./js'));
+        .pipe(sourcemaps.init())
+        .pipe(concat('js/libs.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('.'));
 });
 
 //compile less files
 gulp.task('watchLess', function () {
-    //watch for styles.less
-    gulp.watch(mainLessFile, ['compileMainLessFile']);
+    //watch for main styles.less
+    gulp.watch(paths.less.main, ['compileMainLessFile']);
 
     //watch for test.less
-    gulp.watch(testLessFile, ['compileTestLessFile']);
+    gulp.watch(paths.less.test, ['compileTestLessFile']);
 
-    //watch for test.less
-    gulp.watch(fontFaceLessFile, ['compileFontFaceFile']);
+    //watch for font-face.less
+    gulp.watch(paths.less.font, ['compileFontFaceFile']);
 
-    //watch for test.less
-    gulp.watch(tempLessFile, ['compileTempFile']);
+    //watch for temp.less
+    gulp.watch(paths.less.temp, ['compileTempFile']);
 });
 
 //add prefixes at the end of developing

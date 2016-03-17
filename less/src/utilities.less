@@ -17,17 +17,33 @@
   padding-top: @pt;
   padding-bottom: @pb;
 }
+.padding-vertical(@pv) {
+  padding-top: @pv;
+  padding-bottom: @pv;
+}
 .padding-horizontal(@pl; @pr) {
   padding-left: @pl;
   padding-right: @pr;
 }
-.margin-vertical(@pt; @pb) {
-  margin-top: @pt;
-  margin-bottom: @pb;
+.padding-horizontal(@ph) {
+  padding-left: @ph;
+  padding-right: @ph;
 }
-.margin-horizontal(@pl; @pr) {
-  margin-left: @pl;
-  margin-right: @pr;
+.margin-vertical(@mt; @mb) {
+  margin-top: @mt;
+  margin-bottom: @mb;
+}
+.margin-vertical(@mv) {
+  margin-top: @mv;
+  margin-bottom: @mv;
+}
+.margin-horizontal(@ml; @mr) {
+  margin-left: @ml;
+  margin-right: @mr;
+}
+.margin-horizontal(@mh) {
+  margin-left: @mh;
+  margin-right: @mh;
 }
 
 //vertical centering
