@@ -17,7 +17,8 @@ var paths = {
         font: './fonts/font-faces.less',
         temp: './less/temp.less',
         bootstrap: 'bower_components/bootstrap/less/**/*.less',
-        fontAwesome: 'bower_components/font-awesome/less/*.less'
+        fontAwesome: 'bower_components/font-awesome/less/*.less',
+        components: './less/src/components/*.less'
     },
     js: {
         jquery: 'bower_components/jquery/dist/jquery.min.js',
@@ -122,8 +123,8 @@ gulp.task('compressJS', function() {
 
 //compile less files
 gulp.task('watchLess', function () {
-    //watch for main styles.less
-    gulp.watch(paths.less.main, ['compileMainLessFile']);
+    //watch for main styles.less & components
+    gulp.watch([paths.less.main, paths.less.components], ['compileMainLessFile']);
 
     //watch for test.less
     gulp.watch(paths.less.test, ['compileTestLessFile']);
