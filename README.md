@@ -21,3 +21,12 @@ Version 1.3:
 * minify images with Gulp
 * improve gulpfile
 * bug fixes
+
+Version 1.4:
+* added compressing js files
+* added sourcemaps gulp plugin
+* added source maps for js & css files
+* changed & improved gulpfile
+* updated gulp plugins
+* splited components.less into different less files
+* bug fixes, some improvements

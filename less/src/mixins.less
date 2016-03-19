@@ -5,13 +5,6 @@
   font-size: @f-size;
 }
 
-//border-radius
-.bd-radius(@radius) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-          border-radius: @radius;
-}
-
 //paddings & margins
 .padding-vertical(@pt; @pb) {
   padding-top: @pt;
@@ -77,35 +70,27 @@
   .active-state (@rule)
 }
 
-//sprite bg image
-.bg_img(@x; @y) {
-  background: url("@{path}/imgs/sprite.png") @x @y no-repeat;
+//absolute location for element
+.absoluteLocation(@coords) {
+  position: absolute;
+  .chooseCoords(@coords);
 }
 
-//multiple options transform
-.transform_multi(@rules) {
-  -webkit-transform: @rules;
-  -moz-transform: @rules;
-  -ms-transform: @rules;
-  -o-transform: @rules;
-  transform: @rules;
-}
-
-//media utilities
-.md-media(@rule) {
-  @media screen and (max-width: @screen-md-max) {
-    @rule();
+.chooseCoords(@coords) {
+  @topVal: extract(@coords, 1);
+  @rightVal: extract(@coords, 2);
+  @bottomVal: extract(@coords, 3);
+  @leftVal: extract(@coords, 4);
+  & when (isnumber(@topVal)) {
+    top: @topVal;
+  }
+  & when (isnumber(@rightVal)) {
+    right: @rightVal;
+  }
+  & when (isnumber(@bottomVal)) {
+    bottom: @bottomVal;
+  }
+  & when (isnumber(@leftVal)) {
+    left: @leftVal;
   }
 }
-.sm-media(@rule) {
-  @media screen and (max-width: @screen-sm-max) {
-    @rule();
-  }
-}
-.xs-media(@rule) {
-  @media screen and (max-width: @screen-xs-max) {
-    @rule();
-  }
-}
-
-//here will be mobile first media queries

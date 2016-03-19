@@ -36,9 +36,11 @@ var jsLibs = [paths.js.jquery, paths.js.bootstrap, paths.js.local];
 //compile main less file & compress it
 gulp.task('compileMainLessFile', function () {
     return gulp.src(paths.less.main)
+        .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(csso())
         .pipe(autoprefixer())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./css'));
 });
 
