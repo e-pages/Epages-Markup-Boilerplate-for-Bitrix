@@ -10,10 +10,12 @@
         <script src="<?=SITE_TEMPLATE_PATH; ?>/js/html5.min.js"></script>
         <![endif]-->
         <!-- Load js libraries -->
-        <script src="<?=SITE_TEMPLATE_PATH; ?>/js/libs.min.js"></script>
+        <script src="<?=assetPath(SITE_TEMPLATE_PATH.'/dist/js/bundle.min.js');?>"></script>
+        <!--dev-->
         <?php if (checkCurrentPageLink("sub-pages")) { ?>
             <!--script for test pages-->
             <script src="<?=SITE_TEMPLATE_PATH; ?>/js/dev.js"></script>
         <?php } ?>
+        <!--/dev-->
     </body>
 </html>

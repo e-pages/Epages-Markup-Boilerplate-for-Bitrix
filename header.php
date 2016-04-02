@@ -11,15 +11,17 @@ require("lib.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Styles for current site -->
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH; ?>/css/styles.css"/>
+    <link rel="stylesheet" href="<?=assetPath(SITE_TEMPLATE_PATH.'/dist/css/bundle.min.css');?>"/>
     <!--[if lte IE 9]>
-        <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH; ?>/css/ie.css"/>
+        <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/ie.css"/>
     <![endif]-->
-
-<?php if (checkCurrentPageLink("sub-pages")) { ?>
-    <!--styles for test page-->
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH; ?>/css/test.css">
-<?php } ?>
+    
+    <!--dev-->
+    <?php if (checkCurrentPageLink("sub-pages")) { ?>
+        <!--styles for test page-->
+        <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/dist/demo/bundle.min.css">
+    <?php } ?>
+    <!--/dev-->
 
 </head>
 <body>
