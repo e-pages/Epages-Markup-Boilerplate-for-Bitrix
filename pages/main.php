@@ -1,7 +1,7 @@
-<?php require("../header.php"); ?>
+<?php require '../header.php'; ?>
 
 <!-- components start here -->
-<?php require(SITE_DIR . "/components/_default_component.php"); ?>
+<?php includeComponent('_default_component'); ?>
 <!-- components end here -->
 
-<?php require("../footer.php"); ?>
+<?php require '../footer.php'; ?>

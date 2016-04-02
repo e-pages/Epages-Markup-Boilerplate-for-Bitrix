@@ -1,6 +1,6 @@
 <?php
-require("constants.php");
 require("lib.php");
+require("constants.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@ require("lib.php");
     <div class="container">
         <div class="row">
             <header class="header">
-
+                <?php includeComponent('nav/menu', 'menu', ['MODIFIER' => 'navbar-fixed-bottom']);?>
             </header>
         </div>
     </div>
