@@ -24,7 +24,11 @@
     <div class="container">
         <h1 id="default">Default Component</h1>
         <div class="row">
-            <?php require(SITE_DIR . "/components/_default_component.php"); ?>
+            <?php includeComponent('_default_component'); ?>
+        </div>
+        <h1 id="default">Menu</h1>
+        <div class="row">
+            <?php includeComponent('nav/menu', 'menu', ['MODIFIER' => 'green']);?>
         </div>
     </div>
 </div>
