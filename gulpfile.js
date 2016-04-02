@@ -8,9 +8,11 @@ var spritesmith = require('gulp.spritesmith');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var sourcemaps = require('gulp-sourcemaps');
+var rev = require('gulp-rev');
+var del = require('del');
 
-//paths vars
-var paths = {
+//path vars
+var path = {
     less: {
         main: './less/styles.less',
         test: './less/test/test.less',
@@ -28,64 +30,70 @@ var paths = {
     fonts: {
         bootstrap: 'bower_components/bootstrap/fonts/**',
         fontAwesome: 'bower_components/font-awesome/fonts/**'
+    },
+    dist: {
+        js: 'dist/js',
+        css: 'dist/css',
+        demo: 'dist/demo'
     }
 };
 
-var jsLibs = [paths.js.jquery, paths.js.bootstrap, paths.js.local];
+var jsDist = [path.js.jquery, path.js.bootstrap, path.js.local];
+var cssDist = [path.less.font, path.less.main];
+var cssDemo = [path.less.test];
 
-//compile main less file & compress it
-gulp.task('compileMainLessFile', function () {
-    return gulp.src(paths.less.main)
+gulp.task('makeCss', function () {
+    return gulp.src(cssDist)
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(csso())
         .pipe(autoprefixer())
+        .pipe(concat({path: 'bundle.min.css', cwd: ''}))
+        .pipe(gulp.dest(path.dist.css))
+        .pipe(rev())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest(path.dist.css))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest(path.dist.css));
 });
 
-//compile test less file & compress it
-gulp.task('compileTestLessFile', function () {
-    return gulp.src(paths.less.test)
+gulp.task('makeDemo', function () {
+    return gulp.src(cssDemo)
+        .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(csso())
         .pipe(autoprefixer())
-        .pipe(gulp.dest('./css'));
+        .pipe(concat({path: 'bundle.min.css', cwd: ''}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(path.dist.demo));
 });
 
-//compile font-face less file & compress it
-gulp.task('compileFontFaceFile', function () {
-    return gulp.src(paths.less.font)
-        .pipe(less())
-        .pipe(csso())
-        .pipe(gulp.dest('./css'));
+gulp.task('makeJs', function () {
+    return gulp.src(jsDist)
+        .pipe(sourcemaps.init())
+        .pipe(concat({path: 'bundle.min.js', cwd: ''}))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.dist.js))
+        .pipe(rev())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(path.dist.js))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest(path.dist.js));
 });
 
-//compile temporary less file & compress it
-//temp file will be deleted in the end
-gulp.task('compileTempFile', function () {
-    return gulp.src(paths.less.temp)
-        .pipe(less())
-        .pipe(csso())
-        .pipe(gulp.dest('./css'));
+gulp.task('clean', function () {
+    return del([path.dist.js, path.dist.css]);
 });
-gulp.task('compileAllLessFiles', ['compileMainLessFile', 'compileTestLessFile', 'compileFontFaceFile', 'compileTempFile']);
 
 //copy files
 gulp.task('copyFonts', function () {
-    gulp.src(paths.fonts.bootstrap).pipe(gulp.dest('fonts'));
-    gulp.src(paths.fonts.fontAwesome).pipe(gulp.dest('fonts'));
+    gulp.src(path.fonts.bootstrap).pipe(gulp.dest('fonts'));
+    gulp.src(path.fonts.fontAwesome).pipe(gulp.dest('fonts'));
 });
 
-//copy css files when you need styles from bower component
-//gulp.task('copyStyles', function () {
-//    return gulp.src()
-//        .pipe(gulp.dest('css'))
-//});
-
 gulp.task('copyLessLibs', function () {
-    gulp.src(paths.less.bootstrap).pipe(gulp.dest('less/src/bootstrap'));
-    gulp.src(paths.less.fontAwesome).pipe(gulp.dest('less/src/font-awesome'));
+    gulp.src(path.less.bootstrap).pipe(gulp.dest('less/src/bootstrap'));
+    gulp.src(path.less.fontAwesome).pipe(gulp.dest('less/src/font-awesome'));
 });
 gulp.task('copyAllFiles', ['copyFonts', 'copyLessLibs']);
 
@@ -93,12 +101,12 @@ gulp.task('copyAllFiles', ['copyFonts', 'copyLessLibs']);
 gulp.task('makeSprite', function () {
     var spriteData =
         gulp.src('./imgs/sprite_icons/*.*')
-            .pipe(spritesmith({
-                imgName: 'sprite.png',
-                cssName: 'sprite.less',
-                padding: 2,
-                imgPath: '../imgs/sprite.png'
-            }));
+        .pipe(spritesmith({
+            imgName: 'sprite.png',
+            cssName: 'sprite.less',
+            padding: 2,
+            imgPath: '../imgs/sprite.png'
+        }));
     spriteData.img.pipe(gulp.dest('./imgs/'));
     spriteData.css.pipe(gulp.dest('./less/src/'));
 });
@@ -113,46 +121,18 @@ gulp.task('imagemin', function () {
         .pipe(gulp.dest('imgs/'));
 });
 
-//concat js
-gulp.task('compressJS', function() {
-    return gulp.src(jsLibs)
-        .pipe(sourcemaps.init())
-        .pipe(concat('js/libs.min.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('.'));
-});
-
-//compile less files
-gulp.task('watchLess', function () {
-    //watch for main styles.less & components
-    gulp.watch([paths.less.main, paths.less.components], ['compileMainLessFile']);
-
-    //watch for test.less
-    gulp.watch(paths.less.test, ['compileTestLessFile']);
-
-    //watch for font-face.less
-    gulp.watch(paths.less.font, ['compileFontFaceFile']);
-
-    //watch for temp.less
-    gulp.watch(paths.less.temp, ['compileTempFile']);
-});
-
-//add prefixes at the end of developing
-gulp.task('addVendorPrefixes', function () {
-    return gulp.src('css/styles.css')
-        .pipe(autoprefixer())
-        .pipe(gulp.dest('css/'));
+gulp.task('watch', function () {
+    gulp.watch(jsDist, ['makeJs']);
+    gulp.watch([cssDist, path.less.components], ['makeCss']);
+    gulp.watch(path.less.test, ['makeDemo']);
 });
 
 /*
  * Main tasks
  */
-gulp.task('default',
-    ['compileAllLessFiles', 'concatJs', 'copyAllFiles', 'watchLess']
-);
+gulp.task('default', ['make', 'makeDemo', 'watch']);
+gulp.task('make', ['clean', 'makeCss', 'makeJs']);
+gulp.task('init', ['copyAllFiles']);
 
 //end with this task
-gulp.task('end',
-    ['addVendorPrefixes', 'imagemin', 'makeSprite', 'compileAllLessFiles', 'concatJs']
-);
+gulp.task('makeAll', ['makeSprite', 'make']);
