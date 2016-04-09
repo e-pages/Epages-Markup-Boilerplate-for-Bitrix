@@ -1,4 +1,5 @@
-$(document).ready(function() {
+/*global $, jQuery*/
+$(document).ready(function () {
     //variables
     var timeAnimation = 300;
 
