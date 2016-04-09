@@ -45,7 +45,7 @@ require("constants.php");
     <div class="container">
         <div class="row">
             <header class="header">
-                <?php includeComponent('nav/menu', 'menu', ['MODIFIER' => 'navbar-fixed-bottom']);?>
+                <?php includeComponent('nav/menu', 'menu/simple', ['MODIFIER' => 'navbar-fixed-bottom']);?>
             </header>
         </div>
     </div>
