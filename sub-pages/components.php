@@ -30,13 +30,13 @@
         <div class="row">
             <?php includeComponent('nav/menu', 'menu/simple', ['MODIFIER' => 'green']);?>
         </div>
-        <h1 id="default">Menu multilevel tree</h1>
+        <h1 id="default">Menu 4 level</h1>
         <div class="row">
-            <?php includeComponent('nav/menu.tree', 'menu/multilevel.tree', ['MODIFIER' => 'green']);?>
+            <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'green']);?>
         </div>
-        <h1 id="default">Menu multilevel bitrix</h1>
+        <h1 id="default">Menu 2 level</h1>
         <div class="row">
-            <?php includeComponent('nav/menu.multilevel-bitrix', 'menu/multilevel', ['MODIFIER' => 'green']);?>
+            <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'green']);?>
         </div>
     </div>
 </div>
