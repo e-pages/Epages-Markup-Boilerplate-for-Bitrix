@@ -4,6 +4,7 @@ return array(
     array(
         'TEXT' => 'Item 0',
         'LINK' => '/item-0/',
+        'ID' => 'item-0',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -12,6 +13,7 @@ return array(
     array(
         'TEXT' => 'Item 1',
         'LINK' => '/item-1/',
+        'ID' => 'item-1',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -21,6 +23,7 @@ return array(
                 array(
                     'TEXT' => 'Item 1.0',
                     'LINK' => '/item-1-0/',
+                    'ID' => 'item-1-0',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -56,6 +59,7 @@ return array(
                 array(
                     'TEXT' => 'Item 1.1',
                     'LINK' => '/item-1-1/',
+                    'ID' => 'item-1-1',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -91,6 +95,7 @@ return array(
                 array(
                     'TEXT' => 'Item 1.2',
                     'LINK' => '/item-1-2/',
+                    'ID' => 'item-1-2',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -126,6 +131,7 @@ return array(
                 array(
                     'TEXT' => 'Item 1.3',
                     'LINK' => '/item-1-3/',
+                    'ID' => 'item-1-3',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -163,6 +169,7 @@ return array(
     array(
         'TEXT' => 'Item 2 long name',
         'LINK' => '/item-2/',
+        'ID' => 'item-2',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -172,6 +179,7 @@ return array(
                 array(
                     'TEXT' => 'Item 2.0',
                     'LINK' => '/item-2-0/',
+                    'ID' => 'item-2-0',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -207,41 +215,16 @@ return array(
                 array(
                     'TEXT' => 'Item 2.1',
                     'LINK' => '/item-2-1/',
+                    'ID' => 'item-2-1',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
                     ),
-                    'CHILDREN' =>
-                        array(
-                            array(
-                                'TEXT' => 'Item 2.1.0',
-                                'LINK' => '/item-2-1-0/',
-                                'SELECTED' => false,
-                                'PARAMS' => array(
-                                    'DEPTH_LEVEL' => '3',
-                                ),
-                            ),
-                            array(
-                                'TEXT' => 'Item 2.1.1',
-                                'LINK' => '/item-2-1-1/',
-                                'SELECTED' => false,
-                                'PARAMS' => array(
-                                    'DEPTH_LEVEL' => '3',
-                                ),
-                            ),
-                            array(
-                                'TEXT' => 'Item 2.1.2',
-                                'LINK' => '/item-2-1-2/',
-                                'SELECTED' => false,
-                                'PARAMS' => array(
-                                    'DEPTH_LEVEL' => '3',
-                                ),
-                            ),
-                        ),
                 ),
                 array(
                     'TEXT' => 'Item 2.2',
                     'LINK' => '/item-2-2/',
+                    'ID' => 'item-2-2',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -277,6 +260,7 @@ return array(
                 array(
                     'TEXT' => 'Item 2.3',
                     'LINK' => '/item-2-3/',
+                    'ID' => 'item-2-3',
                     'SELECTED' => false,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
@@ -286,6 +270,7 @@ return array(
                             array(
                                 'TEXT' => 'Item 2.3.0',
                                 'LINK' => '/item-2-3-0/',
+                                'ID' => 'item-2-3-0',
                                 'SELECTED' => false,
                                 'PARAMS' => array(
                                     'DEPTH_LEVEL' => '3',
@@ -294,6 +279,7 @@ return array(
                             array(
                                 'TEXT' => 'Item 2.3.1',
                                 'LINK' => '/item-2-3-1/',
+                                'ID' => 'item-2-3-1',
                                 'SELECTED' => false,
                                 'PARAMS' => array(
                                     'DEPTH_LEVEL' => '3',
@@ -321,6 +307,7 @@ return array(
                             array(
                                 'TEXT' => 'Item 2.3.2',
                                 'LINK' => '/item-2-3-2/',
+                                'ID' => 'item-2-3-2',
                                 'SELECTED' => false,
                                 'PARAMS' => array(
                                     'DEPTH_LEVEL' => '3',
@@ -333,6 +320,7 @@ return array(
     array(
         'TEXT' => 'Item 3',
         'LINK' => '/item-3/',
+        'ID' => 'item-3',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -341,6 +329,7 @@ return array(
     array(
         'TEXT' => 'Item 4',
         'LINK' => '/item-4/',
+        'ID' => 'item-4',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -349,6 +338,7 @@ return array(
     array(
         'TEXT' => 'Item 5',
         'LINK' => '/item-5/',
+        'ID' => 'item-5',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -357,6 +347,7 @@ return array(
     array(
         'TEXT' => 'Item 6',
         'LINK' => '/item-6/',
+        'ID' => 'item-6',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
@@ -365,6 +356,7 @@ return array(
     array(
         'TEXT' => 'Item 7',
         'LINK' => '/item-7/',
+        'ID' => 'item-7',
         'SELECTED' => false,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',

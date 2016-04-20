@@ -32,11 +32,11 @@
         </div>
         <h1 id="default">Menu 4 level</h1>
         <div class="row">
-            <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'green']);?>
+            <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'bg-warning']);?>
         </div>
         <h1 id="default">Menu 2 level</h1>
         <div class="row">
-            <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'green']);?>
+            <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'bg-success']);?>
         </div>
     </div>
 </div>
