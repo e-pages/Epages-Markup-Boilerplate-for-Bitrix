@@ -139,17 +139,13 @@ header span {
   font-size: 1.2rem;
   margin-top: 10px;
 }
-.glyphicon,
-.fa {
-  font-size: 2rem;
+.icon .glyphicon,
+.icon .fa {
   .transition(all .1s);
+  font-size: 3.5rem;
 }
 .sprite {
   display: inline-block;
-}
-.glyphicon,
-.fa {
-  font-size: 3.5rem;
 }
 .form-group {
   .glyphicon {
@@ -218,5 +214,27 @@ header span {
   .title {
     font-weight: bold;
     color: @brand-primary;
+  }
+}
+
+//styles for nested menus
+.list-group-item {
+  .list-group {
+    margin: 0px -16px -11px;
+    padding: 10px 0 0;
+    .list-group-item {
+      padding-left: 30px;
+    }
+    @nesting-order: 4;
+    .loop-nest(@i: 2) when (@i < @nesting-order) {
+      .list-group {
+        margin-left: -15px * @i - 1;
+        .list-group-item {
+          padding-left: 15px * (@i + 1);
+        }
+        .loop-nest(@i + 1);
+      }
+    }
+    .loop-nest();
   }
 }
