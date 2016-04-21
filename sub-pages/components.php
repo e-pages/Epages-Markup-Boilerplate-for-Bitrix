@@ -16,6 +16,9 @@
     </ul>
     <ul class="nav">
         <li><a href="#default">Default Component</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#menu-4-level">Menu 4 level</a></li>
+        <li><a href="#menu-2-level">Menu 2 level</a></li>
     </ul>
 </nav>
 
@@ -26,15 +29,15 @@
         <div class="row">
             <?php includeComponent('_default_component'); ?>
         </div>
-        <h1 id="default">Menu</h1>
+        <h1 id="menu">Menu</h1>
         <div class="row">
             <?php includeComponent('nav/menu', 'menu/simple', ['MODIFIER' => 'green']);?>
         </div>
-        <h1 id="default">Menu 4 level</h1>
+        <h1 id="menu-4-level">Menu 4 level</h1>
         <div class="row">
             <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'bg-warning']);?>
         </div>
-        <h1 id="default">Menu 2 level</h1>
+        <h1 id="menu-2-level">Menu 2 level</h1>
         <div class="row">
             <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'bg-success']);?>
         </div>
