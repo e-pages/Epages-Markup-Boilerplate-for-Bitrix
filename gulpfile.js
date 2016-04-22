@@ -3,10 +3,7 @@ var less = require('gulp-less');
 var csso = require('gulp-csso');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var autoprefixer = require('gulp-autoprefixer');
 var spritesmith = require('gulp.spritesmith');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
 var sourcemaps = require('gulp-sourcemaps');
 var rev = require('gulp-rev');
 var del = require('del');
@@ -47,7 +44,6 @@ gulp.task('makeCss', function () {
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(csso())
-        .pipe(autoprefixer())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
         .pipe(gulp.dest(path.dist.css))
         .pipe(rev())
@@ -62,7 +58,6 @@ gulp.task('makeDemo', function () {
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(csso())
-        .pipe(autoprefixer())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.dist.demo));
@@ -109,16 +104,6 @@ gulp.task('makeSprite', function () {
         }));
     spriteData.img.pipe(gulp.dest('./imgs/'));
     spriteData.css.pipe(gulp.dest('./less/src/'));
-});
-
-//minify images
-gulp.task('imagemin', function () {
-    return gulp.src('imgs/*')
-        .pipe(imagemin({
-            progressive: true,
-            use: [pngquant()]
-        }))
-        .pipe(gulp.dest('imgs/'));
 });
 
 gulp.task('watch', function () {
