@@ -25,21 +25,25 @@
 <!-- Page -->
 <div class="test-page-content">
     <div class="container">
-        <h1 id="default">Default Component</h1>
         <div class="row">
-            <?php includeComponent('_default_component'); ?>
-        </div>
-        <h1 id="menu">Menu</h1>
-        <div class="row">
-            <?php includeComponent('nav/menu', 'menu/simple', ['MODIFIER' => 'green']);?>
-        </div>
-        <h1 id="menu-4-level">Menu 4 level</h1>
-        <div class="row">
-            <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'bg-warning']);?>
-        </div>
-        <h1 id="menu-2-level">Menu 2 level</h1>
-        <div class="row">
-            <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'bg-success']);?>
+            <div class="col-xs-10">
+                <h1 id="default">Default Component</h1>
+                <div class="row">
+                    <?php includeComponent('_default_component'); ?>
+                </div>
+                <h1 id="menu">Menu</h1>
+                <div class="row">
+                    <?php includeComponent('nav/menu', 'menu/simple', ['MODIFIER' => 'green']);?>
+                </div>
+                <h1 id="menu-4-level">Menu 4 level</h1>
+                <div class="row">
+                    <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'bg-warning']);?>
+                </div>
+                <h1 id="menu-2-level">Menu 2 level</h1>
+                <div class="row">
+                    <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'bg-success']);?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
