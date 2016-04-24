@@ -9,7 +9,7 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?=SITE_TEMPLATE_PATH; ?>">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>/index.php">Home</a>
         </li>
         <li>
             <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
@@ -1086,10 +1086,11 @@
                 "codiepie", "credit-card-alt", "edge", "fort-awesome", "hashtag", "mixcloud", "modx", "pause-circle",
                 "pause-circle-o", "percent", "product-hunt", "reddit-alien", "scribd", "shopping-bag",
                 "shopping-basket", "stop-circle", "stop-circle-o", "usb");
+//            todo: add icons
             foreach ($icons as $key => $value) { ?>
             <div class="icon">
                 <i class="fa fa-<?=$value; ?>"></i>
-                <span class="name">fa-<?=$value; ?></span>
+                <div class="name">fa-<?=$value; ?></div>
             </div>
             <?php } ?>
         </div>
@@ -1100,7 +1101,7 @@
     <h2 id="sprite-full-image">Full image</h2>
     <div class="row">
         <div class="col-xs-10">
-            <img src="<?=SITE_TEMPLATE_PATH; ?>/imgs/sprite.png" alt="Sprites" class="sprite-full">
+<!--            <img src="--><?//=SITE_TEMPLATE_PATH; ?><!--/imgs/sprite.png" alt="Sprites" class="sprite-full">-->
         </div>
     </div>
     <h2 id="sprite-one-by-one">One by one</h2>
@@ -1111,17 +1112,27 @@
             );
             foreach ($icons as $key => $value) { ?>
             <div class="icon icon-sprite">
-                <i class="<?=$value; ?>"></i>
-                <span class="name"><?=$value; ?></span>
+                <div class="icon-sprite__img <?=$value; ?>"></div>
+                <div class="name"><?=$value; ?></div>
             </div>
             <?php } ?>
         </div>
     </div>
     <h2 id="svg">SVG Sprite</h2>
     <div class="row">
+        <!--<?php //include("../imgs/svg_icons/dist-svg-sprite.svg"); ?>-->
         <div class="col-xs-10">
-            here is svg
-<!--            <img src="--><?//=SITE_TEMPLATE_PATH; ?><!--/imgs/svg-sprite.svg" alt="" class="img-responsive">-->
+            <?php $icons = array(
+                ""
+            );
+            foreach ($icons as $key => $value) { ?>
+                <div class="icon icon-svg">
+                    <svg class="<?=$value; ?>">
+                        <use xlink:href="#<?=$value; ?>"></use>
+                    </svg>
+                    <div class="name"><?=$value; ?></div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>

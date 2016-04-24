@@ -8,7 +8,7 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?=SITE_TEMPLATE_PATH; ?>">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>/index.php">Home</a>
         </li>
         <li>
             <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
@@ -28,19 +28,19 @@
         <div class="row">
             <div class="col-xs-10">
                 <h1 id="default">Default Component</h1>
-                <div class="row">
+                <div>
                     <?php includeComponent('_default_component'); ?>
                 </div>
                 <h1 id="menu">Menu</h1>
-                <div class="row">
+                <div>
                     <?php includeComponent('nav/menu', 'menu/simple', ['MODIFIER' => 'green']);?>
                 </div>
                 <h1 id="menu-4-level">Menu 4 level</h1>
-                <div class="row">
+                <div>
                     <?php includeComponent('nav/menu.tree', 'menu/tree-4-level', ['MODIFIER' => 'bg-warning']);?>
                 </div>
                 <h1 id="menu-2-level">Menu 2 level</h1>
-                <div class="row">
+                <div>
                     <?php includeComponent('nav/menu.tree', 'menu/tree-2-level', ['MODIFIER' => 'bg-success']);?>
                 </div>
             </div>

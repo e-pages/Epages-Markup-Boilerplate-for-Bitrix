@@ -1,0 +1,95 @@
+//font
+@mixin font($f-color: $black, $f-family: $font-family-sans-serif, $f-size: $font-size-base) {
+  color: $f-color;
+  font-family: $f-family;
+  font-size: $f-size;
+}
+
+//paddings & margins
+@mixin padding-vertical($pt, $pb) {
+  padding-top: $pt;
+  padding-bottom: $pb;
+}
+@mixin padding-vertical($pv) {
+  padding-top: $pv;
+  padding-bottom: $pv;
+}
+@mixin padding-horizontal($pl, $pr) {
+  padding-left: $pl;
+  padding-right: $pr;
+}
+@mixin padding-horizontal($ph) {
+  padding-left: $ph;
+  padding-right: $ph;
+}
+@mixin margin-vertical($mt, $mb) {
+  margin-top: $mt;
+  margin-bottom: $mb;
+}
+@mixin margin-vertical($mv) {
+  margin-top: $mv;
+  margin-bottom: $mv;
+}
+@mixin margin-horizontal($ml, $mr) {
+  margin-left: $ml;
+  margin-right: $mr;
+}
+@mixin margin-horizontal($mh) {
+  margin-left: $mh;
+  margin-right: $mh;
+}
+
+//vertical centering
+@mixin vertical-center($align: middle) {
+  display: inline-block;
+  vertical-align: $align;
+}
+
+//focus, hover & active states
+@mixin focus-state {
+  &:focus,
+  .focus {
+    @content;
+  }
+}
+@mixin hover-state {
+  &:hover {
+    @content;
+  }
+}
+@mixin active-state {
+  &:active,
+  &.active {
+    @content;
+  }
+}
+@mixin hover-active-state {
+  @include hover-state;
+  @include active-state;
+}
+
+//absolute location for element
+@mixin chooseCoords($coords) {
+  $topVal: nth($coords, 1);
+  $rightVal: nth($coords, 2);
+  $bottomVal: nth($coords, 3);
+  $leftVal: nth($coords, 4);
+  @if type-of($topVal) == number {
+    top: $topVal;
+  }
+  @if type-of($rightVal) == number {
+    right: $rightVal;
+  }
+  @if type-of($bottomVal) == number {
+    bottom: $bottomVal;
+  }
+  @if type-of($leftVal) == number {
+    left: $leftVal;
+  }
+}
+
+@mixin absoluteLocation($coords) {
+  position: absolute;
+  @include chooseCoords($coords);
+}
+

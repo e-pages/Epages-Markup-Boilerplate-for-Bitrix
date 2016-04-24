@@ -1,10 +1,10 @@
 {
-  "name": "Epages Markup Standart",
-  "homepage": "https://github.com/Rod-rig/Epages-Markup-Boilerplate-for-Bitrix",
+  "name": "epages markup start",
+  "homepage": "https://github.com/e-pages/Epages-Markup-Boilerplate-for-Bitrix",
   "authors": [
     "Vadim Cherniak <cherniakvadim08@gmail.com>"
   ],
-  "description": "Use this boilerplate for markup of new projects",
+  "description": "Boilerplate for markup of new projects",
   "main": "",
   "moduleType": [],
   "license": "MIT",
@@ -15,8 +15,15 @@
     "test",
     "tests"
   ],
+  "useful components": {
+    "owl.carousel": "^2.1.1",
+    "jquery-form-styler": "jquery.form-styler#^1.7.4",
+    "jquery-ui": "^1.11.4",
+    "jqueryui-touch-punch": "*"
+  },
   "devDependencies": {
-    "bootstrap": "^3.3.6",
-    "font-awesome": "^4.5.0"
+    "bootstrap-sass": "^3.3.6",
+    "jquery": "^2.2.3",
+    "font-awesome": "^4.6.1"
   }
 }

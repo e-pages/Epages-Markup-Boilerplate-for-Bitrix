@@ -1,32 +1,34 @@
 var gulp = require('gulp');
-var less = require('gulp-less');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var csso = require('gulp-csso');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var spritesmith = require('gulp.spritesmith');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var spritesmith = require('gulp.spritesmith');
-var sourcemaps = require('gulp-sourcemaps');
 var rev = require('gulp-rev');
 var del = require('del');
 
 //path vars
 var path = {
-    less: {
-        main: './less/styles.less',
-        test: './less/test/test.less',
-        font: './fonts/font-faces.less',
-        temp: './less/temp.less',
-        bootstrap: 'bower_components/bootstrap/less/**/*.less',
-        fontAwesome: 'bower_components/font-awesome/less/*.less',
-        components: './less/src/components/*.less'
+    scss: {
+        main: 'scss/styles.scss',
+        test: 'scss/test/test.scss',
+        font: 'scss/src/font-faces.scss',
+        temp: 'scss/temp.scss',
+        bootstrap: 'bower_components/bootstrap-sass/assets/stylesheets/**/*.scss',
+        fontAwesome: 'bower_components/font-awesome/scss/*.scss',
+        components: 'scss/src/components/*.scss'
     },
     js: {
         jquery: 'bower_components/jquery/dist/jquery.min.js',
-        bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+        bootstrap: 'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         local: 'js/local.js'
     },
     fonts: {
-        bootstrap: 'bower_components/bootstrap/fonts/**',
-        fontAwesome: 'bower_components/font-awesome/fonts/**'
+        bootstrap: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**',
+        fontAwesome: 'bower_components/font-awesome/fonts/*.{otf,eot,svg,ttf,woff,woff2}'
     },
     dist: {
         js: 'dist/js',
@@ -36,13 +38,14 @@ var path = {
 };
 
 var jsDist = [path.js.jquery, path.js.bootstrap, path.js.local];
-var cssDist = [path.less.font, path.less.main];
-var cssDemo = [path.less.test];
+var cssDist = [path.scss.font, path.scss.main];
+var cssDemo = [path.scss.test];
 
 gulp.task('makeCss', function () {
     return gulp.src(cssDist)
         .pipe(sourcemaps.init())
-        .pipe(less())
+        .pipe(sass())
+        .pipe(postcss([ autoprefixer({ browsers: ['> 1%', 'ie >= 9', 'last 3 versions'] }) ]))
         .pipe(csso())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
         .pipe(gulp.dest(path.dist.css))
@@ -56,7 +59,7 @@ gulp.task('makeCss', function () {
 gulp.task('makeDemo', function () {
     return gulp.src(cssDemo)
         .pipe(sourcemaps.init())
-        .pipe(less())
+        .pipe(sass())
         .pipe(csso())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
         .pipe(sourcemaps.write('.'))
@@ -86,30 +89,30 @@ gulp.task('copyFonts', function () {
     gulp.src(path.fonts.fontAwesome).pipe(gulp.dest('fonts'));
 });
 
-gulp.task('copyLessLibs', function () {
-    gulp.src(path.less.bootstrap).pipe(gulp.dest('less/src/bootstrap'));
-    gulp.src(path.less.fontAwesome).pipe(gulp.dest('less/src/font-awesome'));
+gulp.task('copyScssLibs', function () {
+    gulp.src(path.scss.bootstrap).pipe(gulp.dest('scss/src/bootstrap'));
+    gulp.src(path.scss.fontAwesome).pipe(gulp.dest('scss/src/font-awesome'));
 });
-gulp.task('copyAllFiles', ['copyFonts', 'copyLessLibs']);
+gulp.task('copyAllFiles', ['copyFonts', 'copyScssLibs']);
 
 //generate sprites
 gulp.task('makeSprite', function () {
     var spriteData =
-        gulp.src('./imgs/sprite_icons/*.*')
+        gulp.src('imgs/sprite_icons/*')
         .pipe(spritesmith({
             imgName: 'sprite.png',
-            cssName: 'sprite.less',
+            cssName: 'sprite.scss',
             padding: 2,
-            imgPath: '../imgs/sprite.png'
+            imgPath: '../../imgs/sprite.png'
         }));
-    spriteData.img.pipe(gulp.dest('./imgs/'));
-    spriteData.css.pipe(gulp.dest('./less/src/'));
+    spriteData.img.pipe(gulp.dest('imgs/'));
+    spriteData.css.pipe(gulp.dest('scss/src/'));
 });
 
 gulp.task('watch', function () {
     gulp.watch(jsDist, ['makeJs']);
-    gulp.watch([cssDist, path.less.components], ['makeCss']);
-    gulp.watch(path.less.test, ['makeDemo']);
+    gulp.watch([cssDist, path.scss.components], ['makeCss']);
+    gulp.watch(path.scss.test, ['makeDemo']);
 });
 
 /*

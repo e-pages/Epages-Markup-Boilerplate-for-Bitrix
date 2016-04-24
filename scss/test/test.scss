@@ -1,0 +1,240 @@
+/* Libraries ------------------------------------------------------- */
+@import "../src/variables";
+@import "../src/mixins";
+@import "../src/bootstrap/bootstrap";
+
+/* Helpers ----------------------------------------- */
+line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #f00;
+  @media screen and (min-width: $screen-xs-min) {
+    background-color: #0f0;
+  }
+  @media screen and (min-width: $screen-sm-min) {
+    background-color: #00f;
+  }
+  @media screen and (min-width: $screen-md-min) {
+    background-color: #ff0;
+  }
+  @media screen and (min-width: $screen-lg-min) {
+    background-color: #f0f;
+  }
+}
+
+/* Components page ----------------------------------------- */
+
+//styles for nested menus
+.list-group-item {
+  .list-group {
+    margin: 0px -16px -11px;
+    padding: 10px 0 0;
+    .list-group-item {
+      padding-left: 30px;
+      .list-group {
+        //todo: refactor this with cycle
+        margin-left: -31px;
+        .list-group-item {
+          padding-left: 45px;
+          .list-group {
+            margin-left: -46px;
+            .list-group-item {
+              padding-left: 60px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.navbar-fixed-bottom, .navbar-fixed-top {
+  @media screen and (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+/* Fonts page samples ---------------------------------------------- */
+.fontblock {
+  width: 800px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  display: block;
+
+  h1 {
+    margin-top: 300px;
+  }
+}
+.samplebox {
+  white-space: nowrap;
+  margin: 20px 0 0;
+}
+.font-short-list {
+  max-width: 1300px;
+  margin: 0 auto;
+  &:after {
+    content: ' ';
+    height: 0;
+    display: block;
+    overflow: hidden;
+    clear: both;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+
+    @include hover-state {
+      color: $brand-primary;
+    };
+  }
+  span {
+    display: inline-block;
+    overflow: hidden;
+    width: 200px;
+
+    &.samplebox {
+      width: 400px;
+      margin: 0 0 0 20px;
+    }
+  }
+  .weight {
+    text-align: right;
+  }
+  .title {
+    font-weight: bold;
+    color: $brand-primary;
+  }
+}
+
+
+/* Test page ----------------------------------------- */
+.color-swatch {
+  width: 100px;
+  height: 100px;
+  float: left;
+  border-radius: 3px;
+  margin: 5px;
+
+  //todo refactor this
+  &.gray-darker {
+    background-color: $gray-darker;
+  }
+  &.gray-dark {
+    background-color: $gray-dark;
+  }
+  &.gray {
+    background-color: $gray;
+  }
+  &.gray-light {
+    background-color: $gray-light;
+  }
+  &.gray-lighter {
+    background-color: $gray-lighter;
+  }
+
+  &.brand-primary {
+    background-color: $brand-primary;
+  }
+  &.brand-success {
+    background-color: $brand-success;
+  }
+  &.brand-info {
+    background-color: $brand-info;
+  }
+  &.brand-warning {
+    background-color: $brand-warning;
+  }
+  &.brand-danger {
+    background-color: $brand-danger;
+  }
+}
+
+.table-of-content {
+  position: fixed;
+  top: 20px;
+  right: 0;
+  z-index: 20;
+  min-width: 240px;
+  background: #fff;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    a {
+      padding: 3px 20px;
+    }
+    li {
+      display: block;
+      &.active {
+        @include box-shadow(inset 3px 0 0px -1px $brand-primary);
+        & > a {
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+      }
+      & > ul {
+        display: none;
+        li {
+          padding-left: 10px;
+        }
+      }
+      &.active > ul {
+        display: block;
+      }
+    }
+  }
+}
+
+.icon {
+  @include make-xs-column(1);
+  padding: 10px;
+  background-color: $brand-primary;
+  color: $white;
+  text-align: center;
+  border: 1px solid $white;
+  min-height: 139px;
+  @include hover-state {
+    background-color: #fafafa;
+    color: $brand-primary;
+  };
+  @include transition(all $time-animation / 2);
+  &-sprite {
+    min-height: 110px;
+    overflow: hidden;
+    &__img {
+      max-width: 100%;
+    }
+  }
+  .name {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  &-svg {
+    min-height: 110px;
+    svg {
+      fill: $white;
+      max-width: 100%;
+      transition: fill $time-animation / 2;
+    }
+    &:hover svg {
+      fill: $brand-primary;
+    }
+  }
+  .fa,
+  .glyphicon {
+    @include transition(all .1s);
+    font-size: 3.5rem;
+  }
+}
+.sprite-full {
+  border: 3px solid $brand-primary;
+  background-color: #fafafa;
+  @include hover-state {
+    background-color: $brand-primary;
+  };
+}

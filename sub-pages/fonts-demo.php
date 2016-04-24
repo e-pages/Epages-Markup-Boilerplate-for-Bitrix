@@ -32,7 +32,7 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?=SITE_TEMPLATE_PATH; ?>">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH; ?>/index.php">Home</a>
         </li>
         <li>
             <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
