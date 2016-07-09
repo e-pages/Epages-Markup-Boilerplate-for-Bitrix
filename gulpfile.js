@@ -24,6 +24,7 @@ var path = {
     js: {
         jquery: 'bower_components/jquery/dist/jquery.min.js',
         bootstrap: 'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+        html5shiv: 'bower_components/html5shiv/dist/html5shiv.min.js',
         local: 'js/local.js'
     },
     fonts: {
@@ -93,7 +94,11 @@ gulp.task('copyScssLibs', function () {
     gulp.src(path.scss.bootstrap).pipe(gulp.dest('scss/src/bootstrap'));
     gulp.src(path.scss.fontAwesome).pipe(gulp.dest('scss/src/font-awesome'));
 });
-gulp.task('copyAllFiles', ['copyFonts', 'copyScssLibs']);
+
+gulp.task('copyJsLibs', function () {
+    gulp.src(path.js.html5shiv).pipe(gulp.dest('js'));
+});
+gulp.task('copyAllFiles', ['copyFonts', 'copyScssLibs', 'copyJsLibs']);
 
 //generate sprites
 gulp.task('makeSprite', function () {

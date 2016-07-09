@@ -12,8 +12,8 @@ require("constants.php");
 
     <!-- Styles for current site -->
     <link rel="stylesheet" href="<?=assetPath(SITE_TEMPLATE_PATH.'/dist/css/bundle.min.css');?>"/>
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/ie.css"/>
+    <!--[if lt IE 9]>
+        <!--<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/ie.css"/>-->
     <![endif]-->
     
     <!--dev-->

@@ -8,3 +8,4 @@ scss/src/font-awesome/
 /scss/src/sprite.scss
 /imgs
 fonts/
+js/*.min.js
