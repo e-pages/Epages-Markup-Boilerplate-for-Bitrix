@@ -1,32 +1,44 @@
-# EPAGES Markup Boilerplate for Bitrix
-### Markup Boilerplate for CMS Bitrix
-Version 1.0:
-* Preprocessor Less
-* Bootstrap v3.3.5
-* JQuery v2.1.4
-* Font Awesome v4.4.0
-* Pages are built by components
+#Epages Markup Boilerplate
 
-Version 1.1:
-* use Gulp.js for compiling, minifying and concatenating
-
-Version 1.2:
-* Use Bower
-* change project structure
-* add gulp-autoprefixer
-
-Version 1.3:
-* use icons from new Font Awesome v4.5.0
-* generate sprite with Gulp
-* minify images with Gulp
-* improve gulpfile
-* bug fixes
-
-Version 1.4:
-* added compressing js files
-* added sourcemaps gulp plugin
-* added source maps for js & css files
-* changed & improved gulpfile
-* updated gulp plugins
-* splited components.less into different less files
-* bug fixes, some improvements
+##Getting started
+0. Initially you should download and install [node.js](https://nodejs.org/)
+1. Then install Gulp globally by using following command in the command line:
+```bash
+npm i gulp -g
+```
+2. Install Gulp into the project directory by using the following command:
+```bash
+npm i gulp --save-dev
+```
+3. Install node packages into project directory by using the following command:
+```bash
+npm i
+```
+4. Install Bower globally on your system by using the following command:
+```bash
+npm i bower -g
+```
+5. Install bower components by using the following command in the command line:
+```bash
+bower i
+```
+6. Start working on project after executing of next gulp tasks (this task copy all necessary files):
+```bash
+gulp init
+```
+```bash
+gulp
+```
+#### Additional tasks:
+- following command execute task that makes sprite:
+```bash
+gulp makeSprite
+```
+- following command execute task that makes sprite, css, js bundles:
+```bash
+gulp makeAll
+```
+- following command execute task that watch for changes in *.js and *.css files
+```bash
+gulp watch
+```
