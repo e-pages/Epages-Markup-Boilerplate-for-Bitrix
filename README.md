@@ -1,7 +1,11 @@
 #Epages Markup Boilerplate
 
 ##Getting started
-0. Initially you should download and install [node.js](https://nodejs.org/)
+0. Initially you should download and install [node.js](https://nodejs.org/).
+To check is node installed type in command line
+```bash
+node -v
+```
 1. Then install Gulp globally by using following command in the command line:
 ```bash
 npm i gulp -g
@@ -29,16 +33,17 @@ gulp init
 ```bash
 gulp
 ```
+Last task will watch for changes in main and components scss files
 #### Additional tasks:
-- following command execute task that makes sprite:
+- following command executes task that makes sprite:
 ```bash
 gulp makeSprite
 ```
-- following command execute task that makes sprite, css, js bundles:
+- following command executse task that makes sprite, css, js bundles:
 ```bash
 gulp makeAll
 ```
-- following command execute task that watch for changes in *.js and *.css files
+- following command executes task that watch for changes in *.js and *.css files
 ```bash
 gulp watch
 ```

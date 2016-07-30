@@ -7,7 +7,7 @@
             </div>
         </div>
         <!--[if lt IE 9]>
-        <script src="<?=SITE_TEMPLATE_PATH; ?>/js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script>
         <![endif]-->
         <!-- Load js libraries -->
         <script src="<?=assetPath(SITE_TEMPLATE_PATH.'/dist/js/bundle.min.js');?>"></script>

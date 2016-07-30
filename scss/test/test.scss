@@ -88,9 +88,9 @@ line {
     text-decoration: none;
     display: inline-block;
 
-    @include hover-state {
+    &:hover {
       color: $brand-primary;
-    };
+    }
   }
   span {
     display: inline-block;
@@ -198,10 +198,10 @@ line {
   text-align: center;
   border: 1px solid $white;
   min-height: 139px;
-  @include hover-state {
+  &:hover {
     background-color: #fafafa;
     color: $brand-primary;
-  };
+  }
   @include transition(all $time-animation / 2);
   &-sprite {
     min-height: 110px;
@@ -234,7 +234,7 @@ line {
 .sprite-full {
   border: 3px solid $brand-primary;
   background-color: #fafafa;
-  @include hover-state {
+  &:hover {
     background-color: $brand-primary;
-  };
+  }
 }

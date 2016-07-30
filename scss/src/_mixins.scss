@@ -1,7 +1,6 @@
 //font
-@mixin font($f-color: $black, $f-family: $font-family-sans-serif, $f-size: $font-size-base) {
+@mixin font($f-color: $black, $f-size: $font-size-base) {
   color: $f-color;
-  font-family: $f-family;
   font-size: $f-size;
 }
 
@@ -10,33 +9,17 @@
   padding-top: $pt;
   padding-bottom: $pb;
 }
-@mixin padding-vertical($pv) {
-  padding-top: $pv;
-  padding-bottom: $pv;
-}
 @mixin padding-horizontal($pl, $pr) {
   padding-left: $pl;
   padding-right: $pr;
-}
-@mixin padding-horizontal($ph) {
-  padding-left: $ph;
-  padding-right: $ph;
 }
 @mixin margin-vertical($mt, $mb) {
   margin-top: $mt;
   margin-bottom: $mb;
 }
-@mixin margin-vertical($mv) {
-  margin-top: $mv;
-  margin-bottom: $mv;
-}
 @mixin margin-horizontal($ml, $mr) {
   margin-left: $ml;
   margin-right: $mr;
-}
-@mixin margin-horizontal($mh) {
-  margin-left: $mh;
-  margin-right: $mh;
 }
 
 //vertical centering
@@ -46,26 +29,22 @@
 }
 
 //focus, hover & active states
-@mixin focus-state {
-  &:focus,
-  .focus {
-    @content;
-  }
-}
 @mixin hover-state {
   &:hover {
     @content;
   }
 }
-@mixin active-state {
-  &:active,
-  &.active {
+@mixin focus-state {
+  &:focus {
     @content;
   }
 }
-@mixin hover-active-state {
-  @include hover-state;
-  @include active-state;
+@mixin hover-focus-active-state {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
 }
 
 //absolute location for element
@@ -93,3 +72,16 @@
   @include chooseCoords($coords);
 }
 
+//responsive image
+@mixin responsive-image($height) {
+  text-align: center;
+  display: block;
+  height: $height;
+  line-height: $height;
+  img {
+    max-height: $height;
+    max-width: 100%;
+    height: auto;
+    @include vertical-center;
+  }
+}
