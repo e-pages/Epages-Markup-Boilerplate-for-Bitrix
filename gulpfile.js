@@ -18,7 +18,6 @@ var path = {
         font: 'scss/src/font-faces.scss',
         temp: 'scss/temp.scss',
         bootstrap: 'bower_components/bootstrap-sass/assets/stylesheets/**/*.scss',
-        fontAwesome: 'bower_components/font-awesome/scss/*.scss',
         components: 'scss/src/components/*.scss'
     },
     js: {
@@ -27,8 +26,7 @@ var path = {
         local: 'js/local.js'
     },
     fonts: {
-        bootstrap: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**',
-        fontAwesome: 'bower_components/font-awesome/fonts/*.{otf,eot,svg,ttf,woff,woff2}'
+        bootstrap: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**'
     },
     dist: {
         js: 'dist/js',
@@ -41,10 +39,16 @@ var jsDist = [path.js.jquery, path.js.bootstrap, path.js.local];
 var cssDist = [path.scss.font, path.scss.main];
 var cssDemo = [path.scss.test];
 
+function errorLog(error) {
+    console.log(error);
+    this.emit('end');
+}
+
 gulp.task('makeCss', function () {
     return gulp.src(cssDist)
         .pipe(sourcemaps.init())
         .pipe(sass())
+        .on('error', errorLog)
         .pipe(postcss([ autoprefixer({ browsers: ['> 1%', 'ie >= 9', 'last 3 versions'] }) ]))
         .pipe(csso())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
@@ -60,6 +64,7 @@ gulp.task('makeDemo', function () {
     return gulp.src(cssDemo)
         .pipe(sourcemaps.init())
         .pipe(sass())
+        .on('error', errorLog)
         .pipe(csso())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
         .pipe(sourcemaps.write('.'))
@@ -86,12 +91,10 @@ gulp.task('clean', function () {
 //copy files
 gulp.task('copyFonts', function () {
     gulp.src(path.fonts.bootstrap).pipe(gulp.dest('fonts'));
-    gulp.src(path.fonts.fontAwesome).pipe(gulp.dest('fonts'));
 });
 
 gulp.task('copyScssLibs', function () {
     gulp.src(path.scss.bootstrap).pipe(gulp.dest('scss/src/bootstrap'));
-    gulp.src(path.scss.fontAwesome).pipe(gulp.dest('scss/src/font-awesome'));
 });
 
 gulp.task('copyAllFiles', ['copyFonts', 'copyScssLibs']);
