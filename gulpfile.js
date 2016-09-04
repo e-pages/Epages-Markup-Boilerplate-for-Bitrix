@@ -18,24 +18,23 @@ var path = {
         font: 'scss/src/font-faces.scss',
         temp: 'scss/temp.scss',
         bootstrap: 'bower_components/bootstrap-sass/assets/stylesheets/**/*.scss',
-        components: 'scss/src/components/*.scss'
+        components: 'scss/components/*.scss'
     },
     js: {
         jquery: 'bower_components/jquery/dist/jquery.min.js',
-        bootstrap: 'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-        local: 'js/local.js'
+        bootstrap: 'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js'
     },
     fonts: {
         bootstrap: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**'
     },
     dist: {
-        js: 'dist/js',
-        css: 'dist/css',
-        demo: 'dist/demo'
+        js: 'js',
+        css: 'css',
+        demo: 'demo'
     }
 };
 
-var jsDist = [path.js.jquery, path.js.bootstrap, path.js.local];
+var jsDist = [path.js.jquery, path.js.bootstrap];
 var cssDist = [path.scss.font, path.scss.main];
 var cssDemo = [path.scss.test];
 
@@ -44,8 +43,8 @@ function errorLog(error) {
     this.emit('end');
 }
 
-gulp.task('makeCss', function () {
-    return gulp.src(cssDist)
+gulp.task('css', function () {
+    return gulp.src(cssDist, { base: '.' })
         .pipe(sourcemaps.init())
         .pipe(sass())
         .on('error', errorLog)
@@ -53,14 +52,11 @@ gulp.task('makeCss', function () {
         .pipe(csso())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
         .pipe(gulp.dest(path.dist.css))
-        .pipe(rev())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(path.dist.css))
-        .pipe(rev.manifest())
         .pipe(gulp.dest(path.dist.css));
 });
 
-gulp.task('makeDemo', function () {
+gulp.task('demo', function () {
     return gulp.src(cssDemo)
         .pipe(sourcemaps.init())
         .pipe(sass())
@@ -71,61 +67,48 @@ gulp.task('makeDemo', function () {
         .pipe(gulp.dest(path.dist.demo));
 });
 
-gulp.task('makeJs', function () {
+gulp.task('js', function () {
     return gulp.src(jsDist)
-        .pipe(sourcemaps.init())
-        .pipe(concat({path: 'bundle.min.js', cwd: ''}))
-        .pipe(uglify())
+        .pipe(concat({path: 'lib.min.js', cwd: ''}))
+        //.pipe(uglify())
         .pipe(gulp.dest(path.dist.js))
-        .pipe(rev())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(path.dist.js))
-        .pipe(rev.manifest())
-        .pipe(gulp.dest(path.dist.js));
-});
-
-gulp.task('clean', function () {
-    return del([path.dist.js, path.dist.css]);
 });
 
 //copy files
-gulp.task('copyFonts', function () {
+gulp.task('fonts', function () {
     gulp.src(path.fonts.bootstrap).pipe(gulp.dest('fonts'));
 });
 
-gulp.task('copyScssLibs', function () {
-    gulp.src(path.scss.bootstrap).pipe(gulp.dest('scss/src/bootstrap'));
+gulp.task('css:libs', function () {
+    gulp.src(path.scss.bootstrap).pipe(gulp.dest('scss/bootstrap'));
 });
 
-gulp.task('copyAllFiles', ['copyFonts', 'copyScssLibs']);
-
 //generate sprites
-gulp.task('makeSprite', function () {
+gulp.task('sprite', function () {
     var spriteData =
-        gulp.src('imgs/sprite_icons/*')
+        gulp.src('img/sprite/*')
         .pipe(spritesmith({
             imgName: 'sprite.png',
             cssName: 'sprite.scss',
             padding: 2,
-            imgPath: '../../imgs/sprite.png'
+            imgPath: '../img/sprite.png'
         }));
-    spriteData.img.pipe(gulp.dest('imgs/'));
-    spriteData.css.pipe(gulp.dest('scss/src/'));
+    spriteData.img.pipe(gulp.dest('img/'));
+    spriteData.css.pipe(gulp.dest('scss/'));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(jsDist, ['makeJs']);
-    gulp.watch([cssDist, path.scss.components], ['makeCss']);
-    gulp.watch(path.scss.test, ['makeDemo']);
-    gulp.watch('imgs/sprite_icons/*', ['makeSprite']);
+    gulp.watch([cssDist, path.scss.components, 'scss/sprite.scss'], ['css']);
+    gulp.watch(path.scss.test, ['demo']);
+    gulp.watch('img/sprite/*', ['sprite']);
 });
 
 /*
  * Main tasks
  */
-gulp.task('default', ['make', 'makeDemo', 'watch']);
-gulp.task('make', ['clean', 'makeCss', 'makeJs']);
-gulp.task('init', ['copyAllFiles']);
+gulp.task('make', ['css']);
+gulp.task('make:all', ['sprite', 'make']);
+gulp.task('init', ['fonts', 'css:libs', 'js', 'make:all']);
+gulp.task('default', ['make', 'demo', 'watch']);
 
-//end with this task
-gulp.task('makeAll', ['makeSprite', 'make']);
+

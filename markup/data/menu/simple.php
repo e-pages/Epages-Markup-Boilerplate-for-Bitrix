@@ -2,47 +2,47 @@
 return array(
     array(
         'TEXT' => 'Главная',
-        'LINK' => SITE_DIR.'',
+        'LINK' => SITE_DIR.'main.php',
         'SELECTED' => true,
     ),
     array(
         'TEXT' => 'Каталог',
-        'LINK' => SITE_DIR.'catalog/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Новости',
-        'LINK' => SITE_DIR.'news/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Доставка',
-        'LINK' => SITE_DIR.'delivery/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Самовывоз',
-        'LINK' => SITE_DIR.'pickup/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Гарантия',
-        'LINK' => SITE_DIR.'warranty/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Распродажа',
-        'LINK' => SITE_DIR.'sale/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Статьи',
-        'LINK' => SITE_DIR.'articles/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
     array(
         'TEXT' => 'Контакты',
-        'LINK' => SITE_DIR.'contacts/',
+        'LINK' => SITE_DIR.'static.php',
         'SELECTED' => false,
     ),
 );
