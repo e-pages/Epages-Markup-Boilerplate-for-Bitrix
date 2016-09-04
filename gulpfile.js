@@ -7,8 +7,6 @@ var autoprefixer = require('autoprefixer');
 var spritesmith = require('gulp.spritesmith');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var rev = require('gulp-rev');
-var del = require('del');
 
 //path vars
 var path = {
