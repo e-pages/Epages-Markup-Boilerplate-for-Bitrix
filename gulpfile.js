@@ -68,7 +68,7 @@ gulp.task('demo', function () {
 gulp.task('js', function () {
     return gulp.src(jsDist)
         .pipe(concat({path: 'lib.min.js', cwd: ''}))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest(path.dist.js))
 });
 
