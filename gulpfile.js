@@ -7,6 +7,7 @@ var autoprefixer = require('autoprefixer');
 var spritesmith = require('gulp.spritesmith');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var fs = require('fs');
 
 //path vars
 var path = {
@@ -101,12 +102,25 @@ gulp.task('watch', function () {
     gulp.watch('img/sprite/*', ['sprite']);
 });
 
+gulp.task('make:dir', function () {
+    var dirs = [
+        'img',
+        'img/sprite',
+        'markup/sample-img',
+        'scss/components'
+    ];
+
+    for (var i = 0, l = dirs.length; i < l; i += 1) {
+        if (!fs.existsSync(dirs[i])){
+            fs.mkdirSync(dirs[i]);
+        }
+    }
+});
+
 /*
  * Main tasks
  */
 gulp.task('make', ['css']);
 gulp.task('make:all', ['sprite', 'make']);
-gulp.task('init', ['fonts', 'css:libs', 'js', 'make:all']);
+gulp.task('init', ['make:dir', 'fonts', 'css:libs', 'js', 'make:all']);
 gulp.task('default', ['make', 'demo', 'watch']);
-
-

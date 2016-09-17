@@ -21,6 +21,13 @@ function isOnPage($pageName = 'main')
  */
 function includeComponent($name, $dataFilePath = '', array $arParams = array())
 {
+    $defaultParameters = include __DIR__ . '/default-parameters/.global.php';
+    $defaultParametersFileName = __DIR__ . '/default-parameters/' .$name.'.php';
+    if (is_file($defaultParametersFileName)) {
+        $defaultParameters = array_merge($defaultParameters, include $defaultParametersFileName);
+    }
+    $arParams = array_merge($defaultParameters, $arParams);
+
     $arResult = array();
     $dataFileName = __DIR__.'/data/'.$dataFilePath.'.php';
     if (is_file($dataFileName)) {
