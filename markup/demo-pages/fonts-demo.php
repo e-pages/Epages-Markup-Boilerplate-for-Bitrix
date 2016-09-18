@@ -1,4 +1,4 @@
-<?php require("../header.php"); ?>
+<?php require("../demo-header.php"); ?>
 
 <?php
     // font settings for test
@@ -32,10 +32,10 @@
             <a href="#top">Top</a>
         </li>
         <li>
-            <a href="<?=SITE_TEMPLATE_PATH; ?>/index.php">Home</a>
+            <a href="<?=SITE_TEMPLATE_PATH?>/index.php">Home</a>
         </li>
         <li>
-            <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
+            <a href="<?=SITE_DIR?>main.php">Main page</a>
         </li>
     </ul>
     <ul class="nav">
@@ -160,4 +160,4 @@ $text = $text_ru . $text_en . $digits ."The five boxing wizards jump quickly. Lo
     </div>
 </div>
 
-<?php require("../footer.php") ?>
+<?php require("../demo-footer.php") ?>

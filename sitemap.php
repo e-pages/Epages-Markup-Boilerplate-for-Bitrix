@@ -31,43 +31,48 @@
     </style>
 </head>
 <body>
-    <?php function getDirMap($dirname) {
+    <?php
+    function getDirMap($dirName)
+    {
         // read page directory
-        $dirmap = array();
-        if ($handle = opendir('./'.$dirname)) {
+        $dirMap = array();
+        if ($handle = opendir('./' . $dirName)) {
             while (false !== ($file = readdir($handle))) {
-                if ($file != "." && $file != "..") {
-                    $dirmap[] = array(
-                        'url' => $dirname . "/" . $file,
-                        'name' => (($ext_index = strripos($file, ".php", -1)) === false ? $file : substr_replace($file, "", $ext_index, 4))
-                        );
+                if ($file != "." && $file != ".." && $file != 'favicon.ico') {
+                    $dirMap[] = array(
+                        'url' => $dirName . "/" . $file,
+                        'name' => (($ext_index = strripos($file, ".php", -1)) === false ? $file
+                            : substr_replace($file, "", $ext_index, 4)),
+                    );
                 }
             }
-        closedir($handle);
+            closedir($handle);
         }
-        return $dirmap;
-    } ?>
+
+        return $dirMap;
+    }
+    ?>
     <div class="block">
         <h1>Pages</h1>
         <ul>
-            <?php foreach (getDirMap("pages") as $value) { ?>
-            <li>
-                <a href="<?php echo $value['url']; ?>">
-                    <?php echo $value['name']; ?>
-                </a>
-            </li>
+            <?php foreach (getDirMap('markup/pages') as $value) { ?>
+                <li>
+                    <a href="<?= $value['url']; ?>">
+                        <?= $value['name']; ?>
+                    </a>
+                </li>
             <?php } ?>
         </ul>
     </div>
     <div class="block">
         <h1>Other</h1>
         <ul>
-            <?php foreach (getDirMap("sub-pages") as $value) { ?>
-            <li>
-                <a href="<?php echo $value['url']; ?>">
-                    <?php echo $value['name']; ?>
-                </a>
-            </li>
+            <?php foreach (getDirMap('markup/demo-pages') as $value) { ?>
+                <li>
+                    <a href="<?= $value['url']; ?>">
+                        <?= $value['name']; ?>
+                    </a>
+                </li>
             <?php } ?>
         </ul>
     </div>

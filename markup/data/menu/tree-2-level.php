@@ -14,7 +14,7 @@ return array(
         'TEXT' => 'Item 1',
         'LINK' => '/item-1/',
         'ID' => 'item1',
-        'SELECTED' => false,
+        'SELECTED' => true,
         'PARAMS' => array(
             'DEPTH_LEVEL' => '1',
         ),
@@ -31,7 +31,7 @@ return array(
                 array(
                     'TEXT' => 'Item 1.1',
                     'LINK' => '/item-1-1/',
-                    'SELECTED' => false,
+                    'SELECTED' => true,
                     'PARAMS' => array(
                         'DEPTH_LEVEL' => '2',
                     ),

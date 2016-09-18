@@ -1,32 +1,5 @@
-<?php
-require("lib.php");
-require("constants.php");
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page title</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Styles for current site -->
-    <link rel="stylesheet" href="<?=assetPath(SITE_TEMPLATE_PATH.'/dist/css/bundle.min.css');?>"/>
-    <!--[if lt IE 9]>
-        <!--<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/ie.css"/>-->
-    <![endif]-->
-    
-    <!--dev-->
-    <?php if (checkCurrentPageLink("sub-pages")) { ?>
-        <!--styles for test page-->
-        <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/dist/demo/bundle.min.css">
-    <?php } ?>
-    <!--/dev-->
-
-</head>
-<body>
 <!--[if lte IE 8]>
-    <div style="background: #eeeeee; font-family: Arial, sans-serif;">
+<div style="background: #eeeeee; font-family: Arial, sans-serif;">
     <p style="font-size: 20px; color: red; text-align:center; padding: 10px 80px 0;">Обратите внимание, Ваш браузер устарел!</p>
     <p style="padding: 10px 80px 0;">
         Вы используете устаревшую версию браузера Internet Explorer.
@@ -39,11 +12,5 @@ require("constants.php");
         <a href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie">последней версии</a>.
     </p>
     <hr style="border-color: #cccccc;">
-    </div>
+</div>
 <![endif]-->
-<div class="page-wrapper">
-    <div class="container">
-        <div class="row">
-            <header class="header"></header>
-        </div>
-    </div>

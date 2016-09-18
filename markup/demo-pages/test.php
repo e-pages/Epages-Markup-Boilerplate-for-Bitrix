@@ -1,4 +1,4 @@
-<?php require("../header.php"); ?>
+<?php require("../demo-header.php"); ?>
 
 <div id="top"></div>
 
@@ -12,7 +12,7 @@
             <a href="<?=SITE_TEMPLATE_PATH; ?>/index.php">Home</a>
         </li>
         <li>
-            <a href="<?=SITE_TEMPLATE_PATH; ?>/pages/main.php">Main page</a>
+            <a href="<?=SITE_DIR ?>main.php">Main page</a>
         </li>
     </ul>
     <ul class="nav">
@@ -1137,6 +1137,6 @@
     </div>
 </div>
 
-<?php require("../footer.php") ?>
+<?php require("../demo-footer.php") ?>
 
 

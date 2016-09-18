@@ -2,10 +2,4 @@
 *.xml
 node_modules/
 bower_components/
-dist/
-scss/src/bootstrap/
-scss/src/font-awesome/
-/scss/src/sprite.scss
-/imgs
-fonts/
-js/*.min.js
+scss/bootstrap

@@ -1,11 +1,8 @@
 //useful mixins, vars & helpers
-@import "src/variables";
-@import "src/mixins";
-//@import "src/sprite";
-@import "src/font-faces";
+@import "variables";
+@import "mixins";
+//@import "sprite";
+@import "font-faces";
 
 //Libraries
-@import "src/bootstrap/bootstrap";
-
-//components
-@import "src/components/_default_component";
+@import "bootstrap/bootstrap";

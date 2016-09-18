@@ -1,1 +1,1 @@
-<?php require("sitemap.php"); ?>
+<?php require 'sitemap.php';
