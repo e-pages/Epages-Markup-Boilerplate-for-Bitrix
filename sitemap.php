@@ -38,7 +38,7 @@
         $dirMap = array();
         if ($handle = opendir('./' . $dirName)) {
             while (false !== ($file = readdir($handle))) {
-                if ($file != "." && $file != "..") {
+                if ($file != "." && $file != ".." && $file != 'favicon.ico') {
                     $dirMap[] = array(
                         'url' => $dirName . "/" . $file,
                         'name' => (($ext_index = strripos($file, ".php", -1)) === false ? $file
