@@ -30,6 +30,11 @@ gulp init
 ```bash
 gulp
 ```
+or type in command line (the following command executes `gulp init default` by npm)
+```bash
+npm start
+```
+
 Last task will watch for changes in main and components scss files
 
 #### Additional tasks:

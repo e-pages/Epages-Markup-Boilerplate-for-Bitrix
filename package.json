@@ -4,7 +4,9 @@
   "description": "Markup boilerplate",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "gulp init default"
   },
   "repository": {
     "type": "git",
@@ -25,8 +27,8 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^2.0.0",
-    "gulp-postcss": "^6.1.0",
-    "gulp-sass": "^2.3.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp.spritesmith": "^6.2.1"
