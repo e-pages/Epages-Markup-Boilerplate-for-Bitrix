@@ -5,19 +5,19 @@
 }
 
 //paddings & margins
-@mixin padding-vertical($pt, $pb) {
+@mixin padding-vertical($pt, $pb: $pt) {
   padding-top: $pt;
   padding-bottom: $pb;
 }
-@mixin padding-horizontal($pl, $pr) {
+@mixin padding-horizontal($pl, $pr: $pl) {
   padding-left: $pl;
   padding-right: $pr;
 }
-@mixin margin-vertical($mt, $mb) {
+@mixin margin-vertical($mt, $mb: $mt) {
   margin-top: $mt;
   margin-bottom: $mb;
 }
-@mixin margin-horizontal($ml, $mr) {
+@mixin margin-horizontal($ml, $mr: $ml) {
   margin-left: $ml;
   margin-right: $mr;
 }
@@ -83,5 +83,19 @@
     max-width: 100%;
     height: auto;
     @include vertical-center;
+  }
+}
+
+@mixin triangle($direction, $color, $size) {
+  content: '';
+  @include square(0);
+  border-#{$direction}: $size solid $color;
+
+  @if ($direction == top or $direction == bottom) {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  } @else if ($direction == left or $direction == right) {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
   }
 }

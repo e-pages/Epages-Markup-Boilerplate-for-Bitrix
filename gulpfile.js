@@ -50,7 +50,6 @@ gulp.task('css', function () {
         .pipe(postcss([ autoprefixer({ browsers: ['> 1%', 'ie >= 9', 'last 3 versions'] }) ]))
         .pipe(csso())
         .pipe(concat({path: 'bundle.min.css', cwd: ''}))
-        .pipe(gulp.dest(path.dist.css))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.dist.css));
 });
@@ -97,7 +96,7 @@ gulp.task('sprite', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch([cssDist, path.scss.components, 'scss/sprite.scss'], ['css']);
+    gulp.watch([cssDist, path.scss.components, 'scss/sprite.scss', 'scss/_variables.scss'], ['css']);
     gulp.watch(path.scss.test, ['demo']);
     gulp.watch('img/sprite/*', ['sprite']);
 });
