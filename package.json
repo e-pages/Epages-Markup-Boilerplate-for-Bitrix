@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/e-pages/Epages-Markup-Boilerplate-for-Bitrix#readme",
   "devDependencies": {
-    "autoprefixer": "^6.4.1",
+    "autoprefixer": "^6.5.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^2.0.0",
