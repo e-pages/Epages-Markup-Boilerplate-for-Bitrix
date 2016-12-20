@@ -15,7 +15,6 @@ var path = {
         main: 'scss/styles.scss',
         test: 'scss/test/test.scss',
         font: 'scss/src/font-faces.scss',
-        temp: 'scss/temp.scss',
         bootstrap: 'bower_components/bootstrap-sass/assets/stylesheets/**/*.scss',
         components: 'scss/components/*.scss'
     },
