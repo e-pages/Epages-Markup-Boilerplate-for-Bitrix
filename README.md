@@ -15,14 +15,6 @@ npm i gulp -g
 ```bash
 npm i
 ```
-* Install Bower globally on your system by using the following command:
-```bash
-npm i bower -g
-```
-* Install bower components (execute in project directory):
-```bash
-bower i
-```
 * Start working on project (execute in project directory):
 ```bash
 gulp init

@@ -4,7 +4,6 @@
   "description": "Markup boilerplate",
   "main": "",
   "scripts": {
-    "postinstall": "bower install",
     "prestart": "npm install",
     "start": "gulp init default"
   },
@@ -22,15 +21,24 @@
     "url": "https://github.com/e-pages/Epages-Markup-Boilerplate-for-Bitrix/issues"
   },
   "homepage": "https://github.com/e-pages/Epages-Markup-Boilerplate-for-Bitrix#readme",
+  "useful plugins": {
+    "owl.carousel": "^2.1.1",
+    "jquery-form-styler": "jquery.form-styler#^1.7.4",
+    "jquery-ui": "^1.11.4",
+    "jqueryui-touch-punch": "*",
+    "font-awesome": "^4.6.1"
+  },
   "devDependencies": {
-    "autoprefixer": "^6.5.4",
+    "autoprefixer": "^6.6.1",
+    "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^2.0.0",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^6.3.0",
     "gulp-sass": "^3.0.0",
-    "gulp-sourcemaps": "^1.9.1",
+    "gulp-sourcemaps": "^2.4.0",
     "gulp-uglify": "^2.0.0",
-    "gulp.spritesmith": "^6.2.1"
+    "gulp.spritesmith": "^6.2.1",
+    "jquery": "^3.1.1"
   }
 }

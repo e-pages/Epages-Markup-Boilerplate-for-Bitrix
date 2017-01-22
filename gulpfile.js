@@ -15,15 +15,15 @@ var path = {
         main: 'scss/styles.scss',
         test: 'scss/test/test.scss',
         font: 'scss/src/font-faces.scss',
-        bootstrap: 'bower_components/bootstrap-sass/assets/stylesheets/**/*.scss',
+        bootstrap: 'node_modules/bootstrap-sass/assets/stylesheets/**/*.scss',
         components: 'scss/components/*.scss'
     },
     js: {
-        jquery: 'bower_components/jquery/dist/jquery.min.js',
-        bootstrap: 'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js'
+        jquery: 'node_modules/jquery/dist/jquery.min.js',
+        bootstrap: 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'
     },
     fonts: {
-        bootstrap: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/**'
+        bootstrap: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/**'
     },
     dist: {
         js: 'js',
@@ -72,12 +72,12 @@ gulp.task('js', function () {
 });
 
 //copy files
-gulp.task('fonts', function () {
-    gulp.src(path.fonts.bootstrap).pipe(gulp.dest('fonts'));
-});
-
-gulp.task('css:libs', function () {
-    gulp.src(path.scss.bootstrap).pipe(gulp.dest('scss/bootstrap'));
+function copy(asset, dist) {
+    return gulp.src(asset).pipe(gulp.dest(dist));
+}
+gulp.task('copy', function () {
+    copy(path.fonts.bootstrap, 'fonts');
+    copy(path.scss.bootstrap, 'scss/bootstrap');
 });
 
 //generate sprites
@@ -120,5 +120,5 @@ gulp.task('make:dir', function () {
  */
 gulp.task('make', ['css']);
 gulp.task('make:all', ['sprite', 'make']);
-gulp.task('init', ['make:dir', 'fonts', 'css:libs', 'js', 'make:all']);
+gulp.task('init', ['make:dir', 'copy', 'js', 'make:all']);
 gulp.task('default', ['make', 'demo', 'watch']);
